@@ -1,0 +1,246 @@
+.contact-us {
+    padding: 65px 0px 100px;
+}
+.contact-us-content {
+    .contact-map {
+        padding-right: 20px;
+        .js-map-holder {
+            height: 425px;
+        }
+    }
+    .contact-form {
+        margin-top: 20px;
+        .leave-comment {
+            .box-title {
+                .title {
+                    text-transform: uppercase;
+                }
+            }
+            .comment-form {
+                form {
+                    .wrap-group {
+                        input, textarea  {
+                            background: transparent;
+                        }
+                        textarea {
+                            height: 175px;
+                        }
+                        .btn-submit  {
+                            background: $yellow-primary;
+                            &:hover {
+                                background-color: darken($yellow-primary, 10%);
+                                color: #fff;
+                                border: 2px solid transparent;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.contact-info {
+    padding: 53px 0;
+}
+.contact-info-content {
+    .row {
+        @include align-items(center);
+    }
+    .contact-title {
+        .title {
+            font-size: 20px;
+            text-transform: uppercase;
+        }
+    }
+    .item {
+        @extend display-flex;
+        @include align-items(center);
+        padding-right: 20px;
+        i {
+            color: $yellow-primary;
+            font-size: 18px;
+            padding-right: 20px;
+        }
+        span {
+            font-size: 16px;
+        }
+        .contact-phone {
+            color: $black-title;
+            font-weight: 600;
+        }
+    }
+}
+
+.contact-info-two {
+    padding: 80px 0;
+}
+.contact-info-two-content {
+    ul {
+        @extend list-type-ulli;
+        padding:  0 100px;
+        li {
+            margin-right: 20px;
+            text-align: center;
+            padding: 45px;
+            width: 310px;
+            height: 260px;
+            border: 1px solid #e5e5e5;
+            &:last-child {
+                margin-right: 0px;
+            }
+            .title {
+                text-transform: uppercase;
+                font-size: 20px;
+                padding-top: 21px;
+                padding-bottom: 13px;
+            }
+            .info {
+                span, a {
+                    display: block;
+                    font-size: 16px;
+                    color: #666;
+                }
+                .contact-phone {
+                    font-size: 18px;
+                    line-height: 1.4;
+                }
+                .phone-bold {
+                    color: $black-title;
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+}
+.contact-us-two {
+    background: #fff url('../images/contact-from-bg.jpg') no-repeat scroll center center;
+    @include background-size(cover);
+    .contact-us-content {
+        .contact-form {
+            margin-top: 20px;
+            .leave-comment {
+                .box-title {
+                    .title {
+                        text-transform: none;
+                        font-size: 30px;
+                        color: #fff;
+                    }
+                }
+                .comment-form {
+                    form {
+                        .wrap-group {
+                            input, textarea  {
+                                background: #fff;
+                            }
+                            .btn-submit  {
+                                background: $yellow-primary;
+                                &:hover {
+                                    background-color: darken($yellow-primary, 10%);
+                                    color: #fff;
+                                    border: 2px solid transparent;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Contact us 3
+.contact-us-three {
+    padding: 100px 0;
+}
+.contact-us-three-info {
+    .item {
+        @extend display-flex;
+        margin-bottom: 15px;
+        i {
+            color: $yellow-primary;
+            font-size: 20px;
+            padding-right: 26px;
+            margin-top: 7px;
+        }
+        span {
+            display: block;
+            padding-right: 40px;
+            font-size: 16px;
+        }
+        .address-info {
+            font-size: 18px;
+        }
+        .contact-phone {
+            font-size: 18px;
+            color: $black-title;
+            font-weight: 600;
+        }
+    }
+    .phone-item {
+        margin-bottom: 35px;
+        i {
+            padding-right: 33px;
+        }
+    }
+}
+.contact-us-three-content {
+    .contact-form {
+        form {
+            .form-input {
+                padding: 0 5px;
+                margin-bottom: 3px;
+                .wrap-group {
+                    margin: 0 -5px;
+                }
+            }
+            .wrap-group {
+                overflow: hidden;
+                label {
+                    display: block;
+                    font-size: 15px;
+                    font-family: 'Open Sans';
+                    margin-bottom: 13px;
+                }
+                input, textarea {
+                    background: transparent;
+                    padding: 20px;
+                    border: none;
+                    font-size: 16px;
+                    border : 1px solid #e5e5e5;
+                    width: 100%;
+                    @include border-radius(4px);
+                }
+                input {
+                    margin-bottom: 20px;
+                    float: left;
+                    height: 50px;
+                }
+                textarea {
+                    width: 100%;
+                    margin-bottom: 38px;
+                    height: 140px;
+                }
+                .btn-submit {
+                    background: $yellow-primary;
+                    color: #fff;
+                    font-size: 16px;
+                    border: 2px solid transparent;
+                    display: inline-block;
+                    padding: 10px 28px;
+                    width: auto;
+                    margin-bottom: 0px;
+                    &:hover {
+                        background-color: darken($yellow-primary, 10%);
+                        color: #fff;
+                        border: 2px solid transparent;
+                    }
+                }
+            }
+        }
+    }
+}
+.contact-map-content {
+    .js-map-holder {
+        height: 400px;
+    }
+}

@@ -1,0 +1,47 @@
+.filter-events {
+    @extend list-type-ulli;
+    margin-bottom: 60px;
+    li {
+        span {
+            font-family: 'Roboto Slab';
+            color: $black-title;
+            font-weight: bold;
+            margin: 8px 25px;
+            padding: 0;
+            padding-bottom: 10px;
+            border: none;
+            background: transparent;
+            outline: none;
+            @include border-radius(0px);
+            font-size: 18px;
+            cursor: pointer;
+        }
+        .is-checked {
+            text-transform: uppercase;
+            border-bottom: 2px solid $yellow-primary;
+        }
+    }
+}
+
+.events-page{
+    padding-top: 80px;
+    padding-bottom: 40px;
+    .events-grid {
+        .item {
+            margin-bottom: 60px;
+        }
+    }
+}
+
+.events-page-two {
+    .events-content {
+        .item {
+            .info {
+                padding: 35px 0px 0 0px;
+                .desc {
+                    padding: 0 10px;
+                }
+            }
+        }
+    }
+}

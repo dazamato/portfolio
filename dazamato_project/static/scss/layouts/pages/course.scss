@@ -1,0 +1,68 @@
+.featured-course-sidebar {
+    .featured-course-content {
+        .row {
+            margin-right: -10px;
+            margin-left: -10px;
+        }
+        .item {
+            margin-bottom: 20px;
+            padding-left: 10px;
+            padding-right: 10px;
+            .info {
+                padding: 23px 30px 24px 30px;
+                .teacher {
+                    font-size: 15px;
+                }
+                .title {
+                    font-size: 18px;
+                    padding: 10px 0px 28px 0px;
+                }
+                .desc {
+                    font-size: 14px;
+                    i {
+                        font-size: 18px;
+                    }
+                }
+            }
+        }
+    }
+    .result-count {
+        margin-bottom: 60px;
+        padding-bottom: 13px;
+        border-bottom: 1px solid #e5e5e5;
+        .woocommerce-result-count {
+            font-size: 15px;
+        }
+    }
+}
+.widget_search {
+    form {
+        position: relative;
+        label {
+            display: block;
+        }
+        input[type="search"] {
+            width: 100%;
+            border: none;
+            padding: 9px 20px;
+            @include input-placeholder(#666);
+            font-size: 13px;
+            width: 190px;
+        }
+        &:before {
+            display: inline-block;
+            font: normal normal normal 14px/1 FontAwesome;
+            font-size: inherit;
+            text-rendering: auto;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            content: "\f002";
+            position: absolute;
+            top: 50%;
+            right: 20px;
+            @include transform(translateY(-50%));
+            color: #999;
+            font-size: 15px;
+        }
+    }
+}

@@ -1,0 +1,92 @@
+.membership-content {
+    .item {
+        text-align: center;
+        padding: 40px 20px;
+        border: 1px solid #e5e5e5;
+        &:hover {
+            @include box-shadow(0px 3px 10px 0px rgba(0, 0, 0, 0.15));
+            border: 1px solid transparent;
+        }
+        figure {
+            width: 120px;
+            height: 120px;
+            @include border-radius(50%);
+            margin: 0 auto;
+        }
+        .info {
+            .title {
+                color: $yellow-primary;
+                text-transform: uppercase;
+                font-size: 28px;
+                padding-top: 25px;
+                padding-bottom: 7px;
+            }
+            .price {
+                padding-bottom: 16px;
+                span {
+                    &:first-child {
+                        font-size: 35px;
+                        color: $black-title;
+                        padding-right: 10px;
+                    }
+                    &:last-child {
+                        position: relative;
+                        font-size: 16px;
+                        color: #666;
+                        padding-left: 10px;
+                        &:after {
+                            position: absolute;
+                            content: "/";
+                            left: 0;
+                            top: 50%;
+                            @include transform(translateY(-50%));
+                        }
+                    }
+                }
+            }
+            ul {
+                @extend list-type-ulli;
+                li {
+                    font-size: 16px;
+                    margin-bottom: 15px;
+                    &:last-child {
+                        margin-bottom: 0px;
+                    }
+                }
+            }
+            .au-btn {
+                padding: 10px 50px;
+                margin-top: 50px;
+                margin-bottom: 25px;
+                display: inline-block;
+            }
+        }
+    }
+    .trend {
+        position: relative;
+        &:after {
+            position: absolute;
+            content: attr(data-trend);
+            background: #4272d7;
+            color: #fff;
+            font-size: 14px;
+            text-transform: uppercase;
+            padding: 1px 18px;
+            top: 15px;
+            left: -1px;
+            z-index: 9;
+        }
+        &:before {
+            position: absolute;
+            top: 15px;
+            left: 65px;
+            content: "";
+            width: 0;
+            height: 0;
+            border-top: 12px solid transparent;
+            border-bottom: 12px solid transparent;
+            border-right: 12px solid #fff;
+            z-index: 99;
+        }
+    }
+}

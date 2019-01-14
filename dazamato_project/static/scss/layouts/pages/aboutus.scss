@@ -1,0 +1,211 @@
+.aboutus-featured-content {
+    .aboutus-featured-info {
+        text-align: center;
+        .featured-info-content {
+            padding: 50px 100px;
+            .title {
+                font-size: 30px;
+                padding: 0 200px;
+                line-height: 1.4;
+                padding-bottom: 25px;
+            }
+        }
+    }
+    .aboutus-featured-list {
+        .item {
+            figure {
+                width: 85px;
+                height: 85px;
+                @include border-radius(50%);
+                background: $yellow-primary;
+                margin: 0 auto;
+            }
+            .info {
+                text-align: center;
+                padding: 0 15px;
+                .title {
+                    padding-top: 25px;
+                    padding-bottom: 10px;
+                    font-size: 22px;
+                }
+            }
+        }
+    }
+}
+.aboutus-testimonials {
+    background: #fff url('../images/aboutus-testimonials.jpg') no-repeat scroll center center;
+    @include background-size(cover);
+    padding-bottom: 90px;
+    padding-top: 110px;
+    // margin-bottom: -30px;
+}
+.aboutus-testimonials-content {
+    .item {
+        text-align: center;
+        padding: 0 200px;
+        .desc {
+            font-size: 28px;
+            color: $grey-background;
+            padding-bottom: 34px;
+        }
+        .title {
+            font-size: 22px;
+            color: #fff;
+        }
+        .job-title {
+            color: #ccc;
+            font-size: 16px;
+            padding-top: 8px;
+            padding-bottom: 50px;
+            display: block;
+        }
+    }
+}
+
+.our-story {
+    padding: 75px 0;
+}
+.our-story-content {
+    .section-title {
+        margin-bottom: 35px;
+    }
+    p {
+        margin-bottom: 18px;
+    }
+    ul {
+        @extend list-type-ulli; 
+        li {
+            width: 50%;
+            float: left;
+            font-family: 'Roboto Slab', serif; 
+            font-weight: bold; 
+            color: $black-title;
+            font-size: 16px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            i {
+                color: $yellow-primary;
+                font-size: 16px;
+                padding-right: 10px;
+            }
+        }
+    }
+}
+
+.about-image {
+    background: #fff url('../images/aboutus-images.jpg') no-repeat center center;
+    @include background-size(cover);
+    background-attachment: fixed;
+    // padding: 225px 0;
+    height: 500px;
+}
+
+.aboutus-our-team {
+    padding-top: 80px;
+    padding-bottom: 40px;
+    .our-team-content {
+        .item {
+            margin-bottom: 55px;
+        }
+    }
+}
+
+.our-story-video {
+    figure {
+        position: relative;
+        .icon-play {
+            i {
+                font-size: 18px;
+            }
+        }
+    }
+}
+.icon-play {
+    color: #fff;
+    width: 70px;
+    height: 70px;
+    @include border-radius(50%);
+    font-size: 16px;
+    z-index: 99;
+    position: relative;
+    &:after {
+        top: -2px;
+        left: -2px;
+        padding: 2px;
+        z-index: -1;
+        background: $yellow-primary;
+        -webkit-transition: -webkit-transform 0.2s, opacity 0.3s;
+        -moz-transition: -moz-transform 0.2s, opacity 0.3s;
+        transition: transform 0.2s, opacity 0.3s;
+        pointer-events: none;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        content: '';
+        -webkit-box-sizing: content-box;
+        -moz-box-sizing: content-box;
+        box-sizing: content-box;
+       @include transform(scale(1.3));
+        opacity: 0;  
+    }
+    &:hover {
+        i {
+            color: #fff;
+        }
+        &:after {
+            @include transform(scale(1));
+            opacity: 1;
+        }
+    }
+}
+.aboutus-statistics {
+    background: #fff url('../images/aboutus-statistics-bg.jpg') no-repeat scroll center center;
+    @include background-size(cover);
+    .section-title {
+        margin-bottom: 0px;
+        h2 {
+            color: #fff;
+        }
+        .desc {
+            color: $grey-background;
+            padding: 25px 300px 22px;
+        }
+    }
+    .statistics-content {
+        .item {
+            span {
+                &:nth-child(2) {
+                    margin-bottom: -10px;
+                }
+            }
+        }
+    }
+}
+.aboutus-testimonials2-content {
+    .item {
+        .info {
+            padding: 30px 20px 30px 30px;
+            margin-bottom: 30px;
+        }
+        figure {
+            @extend display-flex;
+            @include align-items(center);
+            img {
+                width: 60px;
+                height: 60px;
+                @include border-radius(50%);
+            }
+            .thumb-info {
+                padding-left: 15px;
+                .title {
+                    font-size: 18px;
+                    margin-bottom: 1px;
+                }
+                .job-title {
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+}

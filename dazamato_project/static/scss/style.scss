@@ -1,0 +1,78 @@
+/*------------------------------------------------------------------
+[Table of contents]
+
+1. Extend
+2. Global
+3. Arrows
+4. Breadcrumb 
+5. Dots 
+6. Fonts
+7. Pagination
+8. Footer
+9. Header
+10. Sidebar
+11. About us Page 
+12. Blog Page
+13. Contact Page
+14. Course Page
+15. Events Page
+16. Home Page
+17. Gallery Page
+18. Membership Page
+19. Single Course Page
+20. Single Event Page
+21. Single Post Page
+22. Responsive
+-------------------------------------------------------------------*/
+
+/* 1. Extend ------------------------------------------*/
+@import 'common/extend.scss';
+@import 'common/minxi.scss';
+@import 'common/variables.scss';
+/* 2. Global ------------------------------------------*/
+@import 'common/global.scss';
+
+/* 3. Arrows ------------------------------------------*/
+@import 'components/arrows.scss';
+/* 4. Breadcrumb ------------------------------------------*/
+@import 'components/breadcrumb.scss';
+/* 5. Dots ------------------------------------------*/
+@import 'components/dots.scss';
+/* 6. Fonts ------------------------------------------*/
+@import 'components/fonts.scss';
+/* 7. Pagination------------------------------------------*/
+@import 'components/pagination.scss';
+
+/* 8. Footer ------------------------------------------*/
+@import 'layouts/footer.scss';
+/* 9. Header ------------------------------------------*/
+@import 'layouts/header.scss';
+/* 10. Sidebar ------------------------------------------*/
+@import 'layouts/right-sidebar.scss';
+
+
+/* 11. About us Page ------------------------------------------*/
+@import 'layouts/pages/aboutus.scss';
+/* 12. Blog Page ------------------------------------------*/
+@import 'layouts/pages/blog.scss';
+/* 13. Contact Page ------------------------------------------*/
+@import 'layouts/pages/contact.scss';
+/* 14. Course Page ------------------------------------------*/
+@import 'layouts/pages/course.scss';
+/* 15. Events Page ------------------------------------------*/
+@import 'layouts/pages/events.scss';
+/* 16. Home Page ------------------------------------------*/
+@import 'layouts/pages/front-page.scss';
+/* 17. Gallery Page ------------------------------------------*/
+@import 'layouts/pages/gallery.scss';
+/* 18. Membership Page ------------------------------------------*/
+@import 'layouts/pages/membership.scss';
+/* 19. Single Course Page ------------------------------------------*/
+@import 'layouts/pages/single-course.scss';
+/* 20. Single Event Page ------------------------------------------*/
+@import 'layouts/pages/single-event.scss';
+/* 21. Single Post Page ------------------------------------------*/
+@import 'layouts/pages/single.scss';
+
+/* 22. Responsive ------------------------------------------*/
+@import 'layouts/responsive.scss';

@@ -56,7 +56,7 @@ ROOT_URLCONF = 'dazamato_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['dazamato_project/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -80,7 +80,7 @@ DATABASES = {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
         "NAME": "dazamatodb",
         "USER": "postgres",
-        "PASSWORD": "Secret",
+        "PASSWORD": "Jk1mqokn",
         "HOST": "localhost",
         "PORT": "5433",
     }

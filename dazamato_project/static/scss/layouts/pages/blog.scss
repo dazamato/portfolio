@@ -1,0 +1,88 @@
+
+.blog-list, .blog-page, .single {
+    padding-top: 80px;
+    .blog-content {
+        padding-right: 20px;
+    }
+    .widget_search {
+        form {
+            input[type="search"] {
+                width: 100%;
+                border: 1px solid #e5e5e5;
+                padding: 12px 20px;
+                @include input-placeholder(#999);
+                font-size: 15px;
+            }
+            &:before {
+                color: #666;
+            }
+        }
+    }
+}
+.blog-list {
+    .blog-content {
+        .item {
+            margin-bottom: 100px;
+            figure {
+                position: relative;
+                .post-date-list {
+                    bottom: 0;
+                    left: 0;
+                }
+            }
+            .info {
+                text-align: left;
+                .title {
+                    padding: 55px 0 0px 0;
+                    font-size: 28px;
+                }
+                .desc {
+                    margin-bottom: 43px;
+                }
+            }
+            .btn-read-more {
+                .au-readmore {
+                    padding: 10px 35px;
+                }
+            }
+        }
+    }
+}
+.blog-page {
+    .blog-content {
+        .item {
+            margin-bottom: 58px;
+            .info {
+                .entry {
+                    margin: -12px 0 4px 0;
+                }
+                .desc {
+                    margin-bottom: 25px;
+                    font-size: 15px;
+                    padding: 0 20px;
+                }
+            }
+        }
+    }
+}
+.post-date-list {
+    position: absolute;
+    background: $yellow-primary;
+    color: #fff;
+    text-align: center;
+    span {
+        display: block;
+        padding: 3px 27px;
+        &:first-child {
+            font-size: 45px;
+            font-weight: bold;
+            margin-top: -4px;
+            margin-bottom: -22px;
+            font-family: 'Roboto Slab';
+        }
+        &:last-child {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+    }
+}

@@ -1,0 +1,153 @@
+.single-events-content {
+    padding-right: 20px;
+    .single-events-title {
+        font-size: 30px;
+        text-transform: uppercase;
+    }
+    .events-info {
+        padding-top: 30px;
+        padding-bottom: 55px;
+        ul {
+            @extend list-type-ulli;
+            @extend display-flex;
+            li {
+                margin-right: 30px;
+                padding-right: 50px;
+                span {
+                    display: block;
+                    &:first-child {
+                        font-family: 'Roboto Slab', serif; 
+                        font-weight: bold; 
+                        color: $black-title;
+                        font-size: 18px;
+                        margin-bottom: 5px;
+                    }
+                    &:last-child {
+                        font-size: 15px;
+                    }
+                }
+                &:last-child {
+                    margin-right: 0px;
+                }
+            }
+        }
+    }
+    .single-image {
+        img {
+            width: 100%;
+        }
+    }
+    .event-detail {
+        overflow: hidden;
+        padding: 50px 30px;
+        border: 1px solid #e5e5e5;
+        margin-bottom: 62px;
+        .event-detail-title {
+            font-size: 20px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+        }
+        .event-desc, .event-content {
+            padding-bottom: 25px;
+        }
+        p {
+            margin-bottom: 25px;
+        }
+        .event-content {
+            ul {
+                @extend list-type-ulli;
+                li {
+                    font-family: 'Roboto Slab';
+                    font-size: 16px;
+                    font-weight: bold;
+                    color: $black-title;
+                    @extend display-flex;
+                    @include align-items(center);
+                    margin-bottom: 10px;
+                    i {
+                        padding-right: 20px;
+                        color: $yellow-primary;
+                        font-size: 8px;
+                    }
+                    &:last-child {
+                        margin-bottom: 0px;
+                    }
+                }
+            }
+        }
+    }
+    .participants {
+        .participants-title {
+            font-size: 25px;
+            margin-bottom: 45px;
+        }
+        .participants-content {
+            .our-team-content {
+                padding: 0 5px;
+                .item {
+                    margin: 0 -5px;
+                }
+            }
+        }
+    }
+}
+.event-signup {
+    .event-signup-title {
+        color: #fff;
+        font-size: 24px;
+        width: 100%;
+        text-align: center;
+        background: $yellow-primary;
+        padding: 21px 0;
+    }
+    .info {
+        padding: 22px 20px;
+        border: 1px solid #e5e5e5;
+        ul {
+            @extend list-type-ulli;
+            li {
+                margin-bottom: 8px;
+                .label {
+                    font-size: 16px;
+                }
+                .value {
+                    font-family: 'Roboto Slab';
+                    font-size: 16px;
+                    font-weight: bold;
+                    color: #555;
+                    .free {
+                        color: $green-color;
+                    }
+                    input {
+                        border: 1px solid #e5e5e5;
+                        // padding: 3px 20px;
+                        width: 50px;
+                        height: 20px;
+                        text-align: center;
+                        padding: 0 0 0 15px;
+                        font-size: 12px;
+                        font-weight: bold;
+                        color: #666;
+                    }
+                }
+            }
+        }
+        .event-btn {
+            text-align: center;
+            padding-bottom: 8px;
+            padding-top: 30px;
+            .buy-btn {
+                font-family: 'Roboto Slab';
+                font-size: 16px;
+                font-weight: bold;
+                color: #fff;
+                background: $yellow-primary;
+                padding: 12px 40px;
+                display: inline-block;
+                &:hover {
+                    background-color: darken($yellow-primary, 10%);
+                }
+            }
+        }
+    }
+}
