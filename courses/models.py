@@ -52,15 +52,16 @@ class Curriculum(models.Model):
     attachment =
     embeded_video =
     timeinminute =
-    class Category_title_choice(models.Model):
-        Chapter = 'CH'
-        lecture = 'LE'
-        circulum_category_choices = (
-                (Chapter, 'Глава'),
-                (lecture, 'Лекция'),
-        )
-    cirruculum_category= models.CharField(
-        max_length=2,
-        choices=Category_title_choice,
-        default='Chapter',
-    )
+    # class Category_title_choice(models.Model):
+    #     Chapter = 'CH'
+    #     lecture = 'LE'
+    #     circulum_category_choices = (
+    #             (Chapter, 'Глава'),
+    #             (lecture, 'Лекция'),
+    #     )
+    # cirruculum_category= models.CharField(
+    #     max_length=2,
+    #     choices=Category_title_choice,
+    #     default='Chapter',
+    # )
+    lecture
