@@ -271,12 +271,20 @@
                 <div class="container-fluid">
                     <div class="header-top-content display-flex">
                         <div class="header-top-info">
-                            <a href="tel:04445552222" class="telephone"><i class="fas fa-mobile-alt"></i> +1 444-555-2222</a>
-                            <a href="mailto:info@Edumat.com" class="email"><i class="far fa-envelope"></i> info@Edumat.com</a>
+                            <a href="tel:+77015733188" class="telephone"><i class="fas fa-mobile-alt"></i> +7(701)573 31 88</a>
+                            <a href="mailto:dazamato@gmail.common" class="email"><i class="far fa-envelope"></i>dazamato@gmail.com</a>
                         </div>
                         <div class="header-top-account">
-                            <a href="#" class="login"><i class="fas fa-user"></i>Login</a>
-                            <a href="#" class="signup"><i class="fas fa-edit"></i>Register</a>
+                          {% if user.is_authenticated %}
+                          <a href="javascript:{document.getElementById('logout').submit()}" class="logout"><i class="fas fa-sign-out-alt"></i>Выйти</a>
+                          <form id="logout" method="POST" action="{% url 'logout' %}">
+                            {% csrf_token %}
+                            <input type="hidden" />
+                          </form>
+                          {% else %}
+                          <a href="{% url 'login' %}" class="login"><i class="fas fa-user"></i>Войти</a>
+                          <a href="{% url 'signup' %}" class="signup"><i class="fas fa-edit"></i>Регистрация</a>
+                          {% endif %}
                         </div>
                     </div>
                 </div>
