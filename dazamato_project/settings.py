@@ -81,7 +81,7 @@ DATABASES = {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
         "NAME": "dazamatodb",
         "USER": "postgres",
-        "PASSWORD": "Jk1mqokn",
+        "PASSWORD": "secret",
         "HOST": "localhost",
         "PORT": "5433",
     }
