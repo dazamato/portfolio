@@ -10,9 +10,9 @@ class Course(models.Model):
     price = models.IntegerField()
     image = models.ImageField(upload_to='images/')
     instructor = models.ForeignKey(User, on_delete=models.CASCADE)
-    discription = models.CharField(max_length=300)
-    mission = models.CharField(max_length=300)
-    outcomes = models.CharField(max_length=300)
+    discription = models.TextField(max_length=300)
+    mission = models.TextField(max_length=300)
+    outcomes = models.TextField(max_length=300)
     rating = models.IntegerField(default=1)
     pub_date = models.DateTimeField()
     # class Category_choice(models.Model):
@@ -50,22 +50,22 @@ class Review(models.Model):
         return self.text
 
 
-# class Curriculum(models.Model):
-#     course = models.ForeignKey('courses.Course', on_delete=models.CASCADE, related_name='Curriculum')
-#     title = models.CharField(max_length=100)
-#     attachment =
-#     embeded_video =
-#     timeinminute =
-#     # class Category_title_choice(models.Model):
-#     #     Chapter = 'CH'
-#     #     lecture = 'LE'
-#     #     circulum_category_choices = (
-#     #             (Chapter, 'Глава'),
-#     #             (lecture, 'Лекция'),
-#     #     )
-#     # cirruculum_category= models.CharField(
-#     #     max_length=2,
-#     #     choices=Category_title_choice,
-#     #     default='Chapter',
-#     # )
-#     lecture
+class Lecture(models.Model):
+    course = models.ForeignKey('courses.Course', on_delete=models.CASCADE, related_name='Curriculum')
+    title = models.CharField(max_length=100)
+    discription = models.TextField()
+    # attachment =
+    # embeded_video =
+    # timeinminute =
+    # class Category_title_choice(models.Model):
+    #     Chapter = 'CH'
+    #     lecture = 'LE'
+    #     circulum_category_choices = (
+    #             (Chapter, 'Глава'),
+    #             (lecture, 'Лекция'),
+    #     )
+    # cirruculum_category= models.CharField(
+    #     max_length=2,
+    #     choices=Category_title_choice,
+    #     default='Chapter',
+    # )
