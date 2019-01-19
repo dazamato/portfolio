@@ -6,15 +6,16 @@ from django.utils import timezone
 
 class Course(models.Model):
     title = models.CharField(max_length=100)
-    isfree = models.BooleanField()
+    # isfree = models.BooleanField()
     price = models.IntegerField()
     image = models.ImageField(upload_to='images/')
     instructor = models.ForeignKey(User, on_delete=models.CASCADE)
     discription = models.TextField(max_length=300)
     mission = models.TextField(max_length=300)
     outcomes = models.TextField(max_length=300)
-    rating = models.IntegerField(default=1)
+    rating = models.IntegerField(default=10)
     pub_date = models.DateTimeField()
+    # url = models.CharField(max_length=100)
     # class Category_choice(models.Model):
     #     DataScience = 'DS'
     #     WebDevelopment = 'WD'

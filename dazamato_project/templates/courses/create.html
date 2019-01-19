@@ -13,7 +13,7 @@
                 <nav aria-label="breadcrumb">
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{% url 'home' %}">Домашняя страница</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Регистрация</li>
+                        <li class="breadcrumb-item active" aria-current="page">Создание курса</li>
                     </ul>
                 </nav>
             </div>
@@ -31,39 +31,65 @@
                         <div class="contact-form">
                             <div class="leave-comment">
                                 <div class="box-title">
-                                    <h3 class="title">Введите пожалуйста детали регистрации</h3>
+                                    <h3 class="title">Заполните форму для создания курса</h3>
                                 </div>
                                 <div class="comment-form">
-                                    <form method="POST" action="{% url 'signup' %}">
+                                    <form method="POST" action="{% url 'create' %}" enctype="multipart/form-data">
                                       {% csrf_token %}
                                         <div class="form-input">
                                             <div class="row">
-                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                                <div class="col-9">
                                                     <div class="wrap-group">
-                                                        <input type="text" name="username" placeholder="Ваш username" required>
+                                                      <label for="title">Наименование вашего курса:</label>
+                                                      <input type="text" name="title" placeholder="Наименование курса" required>
                                                     </div>
                                                 </div>
-                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                                <div class="col-9">
                                                     <div class="wrap-group">
-                                                        <input type="email" name="email" placeholder="Ваш Email" required>
+                                                      <label for="discription">Краткое описание курса:</label>
+                                                      <textarea name="discription" rows="8" cols="80" placeholder="Введите описание курса" required></textarea>
                                                     </div>
                                                 </div>
+                                                <div class="col-9">
+                                                    <div class="wrap-group">
+                                                      <label for="mission">Целевая аудитория курса:</label>
+                                                      <textarea name="mission" rows="8" cols="80" placeholder="Введите основные пререквизиты и необходимые навыки которыми должен обладать слушатель вашего курса" required></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-9">
+                                                    <div class="wrap-group">
+                                                      <label for="outcomes">Что получит слушатель курса:</label>
+                                                      <textarea name="outcomes" rows="8" cols="80" placeholder="Введите какие навыки и знания получит слушатель курса" required></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-9">
+                                                    <div class="wrap-group">
+                                                      <label for="image">Прикрепите описательную картинку вашего курса:</label>
+                                                      <input type="file" name="image" placeholder="Вложите картинку" required>
+                                                    </div>
+                                                </div>
+                                                <!-- <div class="col-9">
+                                                    <div class="wrap-group">
+                                                      <label for="isfree">Ваш курс бесплатный?</label>
+                                                      <input type="checkbox" name="isfree" value="Бесплатный" checked>
+                                                    </div>
+                                                </div> -->
+
+
+                                                <div class="col-9">
+                                                    <div class="wrap-group">
+                                                        <label for="price">Укажите желаемую цену за ваш курс в тенге:</label>
+                                                        <input type="number" name="price" value="1000" min="0" step="1" data-number-to-fixed="2" data-number-stepfactor="100" class="form-control currency"/>
+
+                                                    </div>
+
+                                                </div>
+
                                             </div>
-                                            <div class="row">
-                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                                                    <div class="wrap-group">
-                                                        <input type="password" name="password1" placeholder="Придумайте пороль" required>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                                                    <div class="wrap-group">
-                                                        <input type="password" name="password2" placeholder="Подтвердите пороль" required>
-                                                    </div>
-                                                </div>
-                                            </div>
+
                                         </div>
                                         <div class="wrap-group">
-                                            <input type="submit" class="btn-submit" value="Зарегистрироваться">
+                                            <input type="submit" class="btn-submit" value="Добавить курс">
                                         </div>
                                     </form>
                                 </div>
