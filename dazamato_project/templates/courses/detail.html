@@ -1,0 +1,416 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load staticfiles %}
+
+<section class="heading-page">
+    <img src="{{ course.image.url }}" alt="" width="100%" height="100%"/>
+    <div class="container">
+        <div class="heading-page-content">
+            <div class="au-page-title">
+                <h1>Описание курса</h1>
+            </div>
+            <nav aria-label="breadcrumb">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Домашняя страница</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ course.title }}</li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<section class="single-course section-padding-large">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12 single-course-content">
+                <div class="single-title display-flex">
+                    <h1>{{ course.title }}</h1>
+                    <span class="singlepaid">{{ course.price }} тенге</span>
+                </div>
+                <div class="single-course-info">
+                    <figure>
+                        <img src="{ course.image.url }}" alt="">
+                    </figure>
+                    <div class="course-teacher-cat display-flex">
+                        <div class="teacher-cat">
+                            <ul class="display-flex">
+                                <li class="display-flex">
+                                    <a href="#">
+                                        <img src="images/featured-courses-small-3.jpg" alt="">
+                                    </a>
+                                    <div class="teacher-cat-item">
+                                        <span>Лектор</span>
+                                        <a href="#">{{ course.instructor }}</a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="teacher-cat-item">
+                                        <span>Категория</span>
+                                        <a href="#">Программмирование и Data Science</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <a href="#" class="au-btn au-btn-small">Купить курс</a>
+                    </div>
+                </div>
+                <div class="single-course-tab">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="overview-tab" data-toggle="tab" href="#overview" role="tab" aria-controls="overview" aria-selected="true"><i class="fas fa-bookmark"></i>Обзор курса</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="curriculum-tab" data-toggle="tab" href="#curriculum" role="tab" aria-controls="curriculum" aria-selected="false"><i class="fas fa-graduation-cap"></i>Календарный план</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="instructor-tab" data-toggle="tab" href="#instructor" role="tab" aria-controls="instructor" aria-selected="false"><i class="fas fa-user-circle"></i>Лектор</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review" aria-selected="false"><i class="fas fa-edit"></i>Отзывы курса</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview-tab">
+                            <div class="course-featured">
+                                <ul class="display-flex-center">
+                                    <li>
+                                        <span><i class="fas fa-file"></i></span>
+                                        <span>Количество лекций</span>
+                                        <span>12</span>
+                                    </li>
+                                    <li>
+                                        <span><i class="fas fa-puzzle-piece"></i></span>
+                                        <span>Количиство тестов</span>
+                                        <span>02</span>
+                                    </li>
+                                    <li>
+                                        <span><i class="fas fa-clock"></i></span>
+                                        <span>Время курса</span>
+                                        <span>06 hour</span>
+                                    </li>
+                                    <li>
+                                        <span><i class="fas fa-signal"></i></span>
+                                        <span>Уровень</span>
+                                        <span>Beginner</span>
+                                    </li>
+                                    <li>
+                                        <span><i class="fas fa-users"></i></span>
+                                        <span>Количество студентов</span>
+                                        <span>100</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="course-overview">
+                                <div class="course-desc">
+                                    <h4 class="course-tab-title"><i class="la la-file-text"></i>Обзор курса</h4>
+                                    <p class="course-desc-content">
+                                      {{ course.discription }}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="course-mission">
+                                <h4 class="course-tab-title"><i class="la la-life-buoy"></i>Цели курса</h4>
+                                <p>
+                                    {{ course.mission }}
+                                </p>
+                                <!-- <ul>
+                                    <li>
+                                        <i class="fas fa-circle"></i>Praesent Vulputate Maximus
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-circle"></i>Maecenas Tellus Tellus Faucibus
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-circle"></i>Curabitur Lacinia Laoreet
+                                    </li>
+                                </ul> -->
+                            </div>
+                            <div class="course-outcome">
+                                <h4 class="course-tab-title"><i class="la la-certificate"></i>Ожидаемые результаты</h4>
+                                <p>
+                                    {{ course.outcomes }}
+                                </p>
+                                <!-- <ul>
+                                    <li><i class="fas fa-check-circle"></i>Maecenas Tellus Tellus Faucibus</li>
+                                    <li><i class="fas fa-check-circle"></i>Vivamus Ornare Orci Leo</li>
+                                    <li><i class="fas fa-check-circle"></i>Vivamus Aliquet Est Sit Amet</li>
+                                    <li><i class="fas fa-check-circle"></i>Curabitur lacinia Augue</li>
+                                    <li><i class="fas fa-check-circle"></i>Suspendisse Mattis Bibendum Elit</li>
+                                </ul> -->
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="tab-pane fade" id="curriculum" role="tabpanel" aria-labelledby="curriculum-tab">
+                            <ul id="curriculum-content" class="curriculum-content">
+                                <li class="card active">
+                                    <div class="card-header" id="headingcurriculumOne">
+                                        <div class="title" data-toggle="collapse" data-target="#curriculumOne" aria-expanded="true" aria-controls="curriculumOne" role="button">
+                                            Get Started Language
+                                        </div>
+                                        <span>1/3</span>
+                                    </div>
+
+                                    <div id="curriculumOne" class="collapse show" aria-labelledby="headingcurriculumOne" data-parent="#curriculum-content">
+                                        <div class="card-body content">
+                                            <ul>
+                                                <li>
+                                                    <a href="#">
+                                                        <span><i class="fas fa-play-circle"></i>Lesson 1.1:</span>
+                                                        <h5 class="title">Language Overview</h5>
+                                                    </a>
+                                                    <span class="finished"><i class="fas fa-check-circle"></i></span>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        <span><i class="la la-file"></i>Lesson 1.2:</span>
+                                                        <h5 class="title">Prepare For The Course</h5>
+                                                    </a>
+                                                    <span class="lesson-time"><i class="far fa-clock"></i>230’</span>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        <span><i class="fas fa-play-circle"></i>Lesson 1.3:</span>
+                                                        <h5 class="title">Learn Fast Language</h5>
+                                                    </a>
+                                                    <span class="lesson-time"><i class="far fa-clock"></i>30’</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="card">
+                                    <div class="card-header" id="headingcurriculumTwo">
+                                        <div class="title" data-toggle="collapse" data-target="#curriculumTwo" aria-expanded="true" aria-controls="curriculumTwo" role="button">
+                                            Get Started Language
+                                        </div>
+                                        <span>0/9</span>
+                                    </div>
+
+                                    <div id="curriculumTwo" class="collapse show" aria-labelledby="headingcurriculumTwo" data-parent="#curriculum-content">
+                                        <div class="card-body content">
+                                            <ul>
+                                                <li>
+                                                    <a href="#">
+                                                        <span><i class="la la-file"></i>Lesson 2.1:</span>
+                                                        <h5 class="title">Suspendisse Interdum</h5>
+                                                    </a>
+                                                    <span class="lesson-time"><i class="far fa-clock"></i>30’</span>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        <span><i class="la la-file"></i>Lesson 2.2:</span>
+                                                        <h5 class="title">Nam Sem Lorem</h5>
+                                                    </a>
+                                                    <span class="lesson-time"><i class="far fa-clock"></i>30’</span>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        <span><i class="la la-file"></i>Lesson 2.3:</span>
+                                                        <h5 class="title">Aliquam Id Congue Libero</h5>
+                                                    </a>
+                                                    <span class="lesson-time"><i class="far fa-clock"></i>30’</span>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        <span><i class="la la-file"></i>Lesson 2.4:</span>
+                                                        <h5 class="title"> Donec Eget Quam</h5>
+                                                    </a>
+                                                    <span class="lesson-time"><i class="far fa-clock"></i>30’</span>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        <span><i class="la la-file"></i>Lesson 2.5:</span>
+                                                        <h5 class="title">Maecenas Tellus Tellus</h5>
+                                                    </a>
+                                                    <span class="lesson-time"><i class="far fa-clock"></i>30’</span>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        <span><i class="la la-file"></i>Lesson 2.6:</span>
+                                                        <h5 class="title">Vivamus Aliquet Est Sit</h5>
+                                                    </a>
+                                                    <span class="lesson-time"><i class="far fa-clock"></i>30’</span>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        <span><i class="la la-file"></i>Lesson 2.7:</span>
+                                                        <h5 class="title">Nunc Sit Amet Molestie Tellus</h5>
+                                                    </a>
+                                                    <span class="lesson-time"><i class="far fa-clock"></i>30’</span>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        <span><i class="la la-puzzle-piece"></i>Lesson 2.8:</span>
+                                                        <h5 class="title">Nam eget ultricies neque</h5>
+                                                    </a>
+                                                    <span class="lesson-time">2 Questions</span>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        <span><i class="la la-puzzle-piece"></i>Lesson 2.9:</span>
+                                                        <h5 class="title">Aenean Blandit Vel Risus</h5>
+                                                    </a>
+                                                    <span class="lesson-time">3 Questions</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="tab-pane fade" id="instructor" role="tabpanel" aria-labelledby="instructor-tab">
+                            <div class="instructor-content">
+                                <div class="instructor-thumb">
+                                    <a href="#">
+                                        <img src="images/single-course-intructor-2.jpg" alt="">
+                                    </a>
+                                </div>
+                                <div class="instructor-info">
+                                    <h4 class="title">
+                                        <a href="#">Alicia Green</a>
+                                    </h4>
+                                    <span class="job-title">Instructor</span>
+                                    <p class="desc">
+                                        urabitur ac interdum dolor, tempor aliquet orci. Nam sem lorem, suscipit in nisl interdum, aliquam pulvinar ipsum. Fusce in felis vitae diam interdum placerat. Nullam viverra in quam a ornare. Aenean blandit vel.
+                                    </p>
+                                    <div class="socials">
+                                        <ul>
+                                            <li>
+                                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><i class="fab fa-google-plus-g"></i></a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><i class="fab fa-youtube"></i></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
+                            <div class="review-content">
+                                <div class="average-rating background-grey ">
+                                    <h4 class="title">Average Rating:</h4>
+                                    <div class="count-rating">
+                                        <span class="rating">{{ course.rating }}</span>
+                                        <span class="total-rating">5</span>
+                                    </div>
+                                    <div class="rating-star">
+                                        {% if course.rating <= 1 %}
+                                        <span class="star-rate rated"><i class="fas fa-star"></i></span>
+                                        <span class="star-rate notrated"><i class="fas fa-star"></i></span>
+                                        <span class="star-rate notrated"><i class="fas fa-star"></i></span>
+                                        <span class="star-rate notrated"><i class="fas fa-star"></i></span>
+                                        <span class="star-rate notrated"><i class="fas fa-star"></i></span>
+                                        {% elif course.rating <= 2 %}
+                                        <span class="star-rate rated"><i class="fas fa-star"></i></span>
+                                        <span class="star-rate rated"><i class="fas fa-star"></i></span>
+                                        <span class="star-rate notrated"><i class="fas fa-star"></i></span>
+                                        <span class="star-rate notrated"><i class="fas fa-star"></i></span>
+                                        <span class="star-rate notrated"><i class="fas fa-star"></i></span>
+                                        {% elif course.rating <= 3 %}
+                                        <span class="star-rate rated"><i class="fas fa-star"></i></span>
+                                        <span class="star-rate rated"><i class="fas fa-star"></i></span>
+                                        <span class="star-rate rated"><i class="fas fa-star"></i></span>
+                                        <span class="star-rate notrated"><i class="fas fa-star"></i></span>
+                                        <span class="star-rate notrated"><i class="fas fa-star"></i></span>
+                                        {% elif course.rating <= 4 %}
+                                        <span class="star-rate rated"><i class="fas fa-star"></i></span>
+                                        <span class="star-rate rated"><i class="fas fa-star"></i></span>
+                                        <span class="star-rate rated"><i class="fas fa-star"></i></span>
+                                        <span class="star-rate rated"><i class="fas fa-star"></i></span>
+                                        <span class="star-rate notrated"><i class="fas fa-star"></i></span>
+                                        {% elif course.rating <= 5 %}
+                                        <span class="star-rate rated"><i class="fas fa-star"></i></span>
+                                        <span class="star-rate rated"><i class="fas fa-star"></i></span>
+                                        <span class="star-rate rated"><i class="fas fa-star"></i></span>
+                                        <span class="star-rate rated"><i class="fas fa-star"></i></span>
+                                        <span class="star-rate rated"><i class="fas fa-star"></i></span>
+                                        {% else %}
+                                        <span class="star-rate rated"><i class="fas fa-star"></i></span>
+                                        <span class="star-rate rated"><i class="fas fa-star"></i></span>
+                                        <span class="star-rate rated"><i class="fas fa-star"></i></span>
+                                        <span class="star-rate rated"><i class="fas fa-star"></i></span>
+                                        <span class="star-rate rated"><i class="fas fa-star"></i></span>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="rating-breakdown js-waypoint">
+                                    <h4 class="title">Rating Breakdown</h4>
+                                    <div class="progress-bar">
+                                        <div class="progress-box">
+                                            <div class="au-progress au-progress-2">
+                                                <div class="au-progress-bar" role="progressbar" data-transitiongoal="100">
+                                                    <span class="au-progress-star">5<i class="la la-star"></i></span>
+                                                    <span class="au-progress-total">15</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="progress-box">
+                                            <div class="au-progress au-progress-2">
+                                                <div class="au-progress-bar" role="progressbar" data-transitiongoal="85">
+                                                    <span class="au-progress-star">4<i class="la la-star"></i></span>
+                                                    <span class="au-progress-total">02</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="progress-box">
+                                            <div class="au-progress au-progress-2">
+                                                <div class="au-progress-bar" role="progressbar" data-transitiongoal="70">
+                                                    <span class="au-progress-star">3<i class="la la-star"></i></span>
+                                                    <span class="au-progress-total">02</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="progress-box">
+                                            <div class="au-progress au-progress-2">
+                                                <div class="au-progress-bar" role="progressbar" data-transitiongoal="12">
+                                                    <span class="au-progress-star">2<i class="la la-star"></i></span>
+                                                    <span class="au-progress-total">0</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="progress-box">
+                                            <div class="au-progress au-progress-2">
+                                                <div class="au-progress-bar" role="progressbar" data-transitiongoal="12">
+                                                    <span class="au-progress-star">1<i class="la la-star"></i></span>
+                                                    <span class="au-progress-total">0</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="socials">
+                    <span>Share:</span>
+                    <ul>
+                        <li>
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fab fa-google-plus-g"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fab fa-pinterest"></i></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</section>
+</main>
+
+{% endblock %}

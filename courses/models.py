@@ -13,7 +13,7 @@ class Course(models.Model):
     discription = models.TextField(max_length=300)
     mission = models.TextField(max_length=300)
     outcomes = models.TextField(max_length=300)
-    rating = models.IntegerField(default=10)
+    rating = models.IntegerField(default=5)
     pub_date = models.DateTimeField()
     # url = models.CharField(max_length=100)
     # class Category_choice(models.Model):
@@ -42,6 +42,7 @@ class Review(models.Model):
     text = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)
     approved_review = models.BooleanField(default=False)
+    rating = models.IntegerField(default=5)
 
     def approve(self):
         self.approved_review = True
@@ -52,9 +53,11 @@ class Review(models.Model):
 
 
 class Lecture(models.Model):
-    course = models.ForeignKey('courses.Course', on_delete=models.CASCADE, related_name='Curriculum')
+    course = models.ForeignKey('courses.Course', on_delete=models.CASCADE, related_name='lecture')
     title = models.CharField(max_length=100)
     discription = models.TextField()
+    video = models.FileField(upload_to='videos/', null=True, verbose_name="video")
+    attachments = models.FileField(upload_to='attachments/', null=True, verbose_name="attachments")
     # attachment =
     # embeded_video =
     # timeinminute =

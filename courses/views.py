@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import Course
 from django.utils import timezone
@@ -24,9 +24,13 @@ def create(request):
             course.pub_date=timezone.datetime.now()
             course.instructor=request.user
             course.save()
-            return redirect('home')
+            return redirect('/courses/'+str(course.id))
         else:
             return render(request, 'courses/create.html', { 'error': 'Все поля обязательны для заполнения'})
 
     else:
         return render(request, 'courses/create.html')
+
+def detail(request, course_id):
+    course=get_object_or_404(Course, pk=course_id)
+    return render(request, 'courses/detail.html', {'course':course})
