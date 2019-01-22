@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load staticfiles %}
+
+    <!-- Heading page -->
+    <section class="heading-page">
+        <img src="{% static 'Banner.jpg' %}" alt="">
+        <div class="container">
+            <div class="heading-page-content">
+                <div class="au-page-title">
+                    <h1>Добавление лекции</h1>
+                </div>
+                <nav aria-label="breadcrumb">
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'home' %}">Курс</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Добавление лекции</li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact us -->
+    <section class="contact-us">
+        <div class="container">
+          {% if error %}
+          {{ error }}
+          {% endif %}
+            <div class="contact-us-content">
+                <div class="row">
+                        <div class="contact-form">
+                            <div class="leave-comment">
+                                <div class="box-title">
+                                    <h3 class="title">Заполните форму для добавления лекции</h3>
+                                </div>
+                                <div class="comment-form">
+                                    <form method="POST" action="{% url 'addlecture' course.id %}" enctype="multipart/form-data">
+                                      {% csrf_token %}
+                                        <div class="form-input">
+                                            <div class="row">
+                                                <div class="col-9">
+                                                    <div class="wrap-group">
+                                                      <label for="title">Наименование лекции:</label>
+                                                      <input type="text" name="title" placeholder="Наименование лекции" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-9">
+                                                    <div class="wrap-group">
+                                                      <label for="discription">Краткое описание лекции:</label>
+                                                      <textarea name="discription" rows="8" cols="80" placeholder="Введите описание курса" required></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-9">
+                                                    <div class="wrap-group">
+                                                      <label for="image">Загрузите видео вашего курса:</label>
+                                                      <input type="file" name="video" placeholder="Загрузите видео">
+                                                    </div>
+                                                </div>
+                                                <div class="col-9">
+                                                    <div class="wrap-group">
+                                                      <label for="image">Загрузите видео вашего курса:</label>
+                                                      <input type="file" name="attachments" placeholder="Загрузите вложения">
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                        <div class="wrap-group">
+                                            <input type="submit" class="btn-submit" value="Добавить лекцию">
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

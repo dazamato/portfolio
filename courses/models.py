@@ -58,6 +58,8 @@ class Lecture(models.Model):
     discription = models.TextField()
     video = models.FileField(upload_to='videos/', null=True, verbose_name="video")
     attachments = models.FileField(upload_to='attachments/', null=True, verbose_name="attachments")
+    def __str__(self):
+        return self.title
     # attachment =
     # embeded_video =
     # timeinminute =
