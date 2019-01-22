@@ -5,7 +5,9 @@ from django.utils import timezone
 
 def home(request):
     return render(request, 'courses/home.html')
-@login_required
+
+
+@login_required(login_url="/accounts/signup")
 def create(request):
     if request.method == 'POST':
         if request.POST['title'] and request.POST['discription'] and request.POST['mission'] and request.POST['outcomes'] and request.POST['price']  and request.FILES['image']:
@@ -35,6 +37,7 @@ def detail(request, course_id):
     course=get_object_or_404(Course, pk=course_id)
     return render(request, 'courses/detail.html', {'course':course})
 
+@login_required(login_url="/accounts/signup")
 def addlecture(request, course_id):
     lecture=Lecture()
     course=get_object_or_404(Course, pk=course_id)

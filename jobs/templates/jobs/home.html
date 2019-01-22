@@ -8,7 +8,6 @@
     <p>
       <a href="mailto:adanikov@icloud.com" class="btn btn-primary my-2">Напишите мне</a>
     </p>
-    <img src="{% static 'IMG_0476.jpeg'%}" height="300" class="rounded-circle" alt="Cinque Terre"/>
   </div>
 </section>
 
@@ -30,4 +29,51 @@
     </div>
   </div>
 </div>
+<!-- Features Courses -->
+<section class="featured-course section-padding-large">
+    <div class="container">
+        <div class="section-title section-title-left section-title-m50">
+            <h2>Featured Courses</h2>
+        </div>
+        <div class="featured-course-content">
+            <div class="row">
+              {% for course in courses.all %}
+                <article class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 item">
+                    <div class="item-thumb">
+                        <a href="single-coursefree.html">
+                            <img src="images/featured-courses-1.jpg" alt="">
+                            <span class="price free">Free</span>
+                            <span class="overlay"></span>
+                        </a>
+                        <div class="vote">
+                            <a href="#"><i class="fas fa-search"></i></a>
+                            <a href="#"><i class="fas fa-heart"></i></a>
+                        </div>
+                        <div class="feadtured-course-small">
+                            <a href="#">
+                                <img src="images/featured-courses-small-1.jpg" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="info">
+                        <a href="#" class="teacher">{{ course.instructor }}</a>
+                        <h3 class="title">
+                            <a href="single-coursefree.html">WordPress LMS Plugin LearnPress</a>
+                        </h3>
+                        <div class="desc">
+                            <a href="#" class="comments"><i class="la la-comments"></i>25</a>
+                            <a href="#" class="students"><i class="la la-group"></i>12</a>
+                        </div>
+                    </div>
+                </article>
+                {% endfor %}
+
+            </div>
+            <div class="viewall-btn">
+                <a href="courses1.html" class="au-btn view-all">View All</a>
+            </div>
+
+        </div>
+    </div>
+</section>
 {% endblock %}
