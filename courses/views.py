@@ -33,30 +33,34 @@ def create(request):
     else:
         return render(request, 'courses/create.html')
 
+
 def detail(request, course_id):
-    course=get_object_or_404(Course, pk=course_id)
-    return render(request, 'courses/detail.html', {'course':course})
+    if request.user.is_authenticated:
+        lecture=Lecture()
+        course=get_object_or_404(Course, pk=course_id)
+        course_object=Course.objects.get(pk=course_id)
+        lectures=Lecture.objects.filter(course=course_object)
+        if request.method == 'POST':
+            if request.POST['title'] and request.POST['chapter'] and request.FILES['video'] and request.FILES['attachments']:
+                course_object=Course.objects.get(pk=course_id)
+                lecture.course=course_object
+                lecture.title=request.POST['title']
+                lecture.chapter=request.POST['chapter']
+                # course.isfree=request.POST.get('isfree', False)
+                lecture.video=request.FILES['video']
+                lecture.attachments=request.FILES['attachments']
+                lecture.save()
+                return redirect('/courses/'+str(course.id))
 
-@login_required(login_url="/accounts/signup")
-def addlecture(request, course_id):
-    lecture=Lecture()
-    course=get_object_or_404(Course, pk=course_id)
-    if request.method == 'POST':
-        if request.POST['title'] and request.POST['discription'] and request.FILES['video'] and request.FILES['attachments']:
-            course_object=Course.objects.get(pk=course_id)
-            lecture.course=course_object
-            lecture.title=request.POST['title']
-            lecture.discription=request.POST['discription']
-            # course.isfree=request.POST.get('isfree', False)
-            lecture.video=request.FILES['video']
-            lecture.attachments=request.FILES['attachments']
-            lecture.save()
-            return redirect('/courses/'+str(course.id))
+                # return HttpResponseRedirect(reverse('poll_results', kwargs={'object_id': p.id}))
+            else:
+                return render(request, 'courses/detail.html', { 'error': 'Все поля обязательны для заполнения'}, { 'course':course, 'lecture':lecture })
 
-            # return HttpResponseRedirect(reverse('poll_results', kwargs={'object_id': p.id}))
         else:
-            return render(request, 'courses/addlecture.html', { 'error': 'Все поля обязательны для заполнения'}, {'course': course })
-
+            return render(request, 'courses/detail.html', {'course': course, 'lectures': lectures })
     else:
-
-        return render(request, 'courses/addlecture.html', {'course': course })
+        lecture=Lecture()
+        course=get_object_or_404(Course, pk=course_id)
+        course_object=Course.objects.get(pk=course_id)
+        lectures=Lecture.objects.filter(course=course_object)
+        return render(request, 'courses/detail.html', {'course': course, 'lectures': lectures })

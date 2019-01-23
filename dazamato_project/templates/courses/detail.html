@@ -142,121 +142,74 @@
                         </div>
                         <div class="tab-pane fade" id="curriculum" role="tabpanel" aria-labelledby="curriculum-tab">
                             <ul id="curriculum-content" class="curriculum-content">
-                                <li class="card active">
-                                    <div class="card-header" id="headingcurriculumOne">
-                                        <div class="title" data-toggle="collapse" data-target="#curriculumOne" aria-expanded="true" aria-controls="curriculumOne" role="button">
-                                            Get Started Language
-                                        </div>
-                                        <span>1/3</span>
-                                    </div>
-
-                                    <div id="curriculumOne" class="collapse show" aria-labelledby="headingcurriculumOne" data-parent="#curriculum-content">
-                                        <div class="card-body content">
-                                            <ul>
-                                                <li>
-                                                    <a href="#">
-                                                        <span><i class="fas fa-play-circle"></i>Lesson 1.1:</span>
-                                                        <h5 class="title">Language Overview</h5>
-                                                    </a>
-                                                    <span class="finished"><i class="fas fa-check-circle"></i></span>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        <span><i class="la la-file"></i>Lesson 1.2:</span>
-                                                        <h5 class="title">Prepare For The Course</h5>
-                                                    </a>
-                                                    <span class="lesson-time"><i class="far fa-clock"></i>230’</span>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        <span><i class="fas fa-play-circle"></i>Lesson 1.3:</span>
-                                                        <h5 class="title">Learn Fast Language</h5>
-                                                    </a>
-                                                    <span class="lesson-time"><i class="far fa-clock"></i>30’</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </li>
+                              {% for lecture in lectures.all %}
                                 <li class="card">
                                     <div class="card-header" id="headingcurriculumTwo">
                                         <div class="title" data-toggle="collapse" data-target="#curriculumTwo" aria-expanded="true" aria-controls="curriculumTwo" role="button">
-                                            Get Started Language
+                                            {{ lecture.title }}
                                         </div>
                                         <span>0/9</span>
                                     </div>
-
-                                    <div id="curriculumTwo" class="collapse show" aria-labelledby="headingcurriculumTwo" data-parent="#curriculum-content">
-                                        <div class="card-body content">
-                                            <ul>
-                                                <li>
-                                                    <a href="#">
-                                                        <span><i class="la la-file"></i>Lesson 2.1:</span>
-                                                        <h5 class="title">Suspendisse Interdum</h5>
-                                                    </a>
-                                                    <span class="lesson-time"><i class="far fa-clock"></i>30’</span>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        <span><i class="la la-file"></i>Lesson 2.2:</span>
-                                                        <h5 class="title">Nam Sem Lorem</h5>
-                                                    </a>
-                                                    <span class="lesson-time"><i class="far fa-clock"></i>30’</span>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        <span><i class="la la-file"></i>Lesson 2.3:</span>
-                                                        <h5 class="title">Aliquam Id Congue Libero</h5>
-                                                    </a>
-                                                    <span class="lesson-time"><i class="far fa-clock"></i>30’</span>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        <span><i class="la la-file"></i>Lesson 2.4:</span>
-                                                        <h5 class="title"> Donec Eget Quam</h5>
-                                                    </a>
-                                                    <span class="lesson-time"><i class="far fa-clock"></i>30’</span>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        <span><i class="la la-file"></i>Lesson 2.5:</span>
-                                                        <h5 class="title">Maecenas Tellus Tellus</h5>
-                                                    </a>
-                                                    <span class="lesson-time"><i class="far fa-clock"></i>30’</span>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        <span><i class="la la-file"></i>Lesson 2.6:</span>
-                                                        <h5 class="title">Vivamus Aliquet Est Sit</h5>
-                                                    </a>
-                                                    <span class="lesson-time"><i class="far fa-clock"></i>30’</span>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        <span><i class="la la-file"></i>Lesson 2.7:</span>
-                                                        <h5 class="title">Nunc Sit Amet Molestie Tellus</h5>
-                                                    </a>
-                                                    <span class="lesson-time"><i class="far fa-clock"></i>30’</span>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        <span><i class="la la-puzzle-piece"></i>Lesson 2.8:</span>
-                                                        <h5 class="title">Nam eget ultricies neque</h5>
-                                                    </a>
-                                                    <span class="lesson-time">2 Questions</span>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        <span><i class="la la-puzzle-piece"></i>Lesson 2.9:</span>
-                                                        <h5 class="title">Aenean Blandit Vel Risus</h5>
-                                                    </a>
-                                                    <span class="lesson-time">3 Questions</span>
-                                                </li>
-                                            </ul>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                            {% if user.is_authenticated %}
+                            <section class="contact-us">
+                                <div class="container">
+                                  {% if error %}
+                                  {{ error }}
+                                  {% endif %}
+                                    <div class="contact-us-content">
+                                        <div class="row">
+                                                <div class="contact-form">
+                                                    <div class="leave-comment">
+                                                        <div class="box-title">
+                                                            <h3 class="title">Заполните форму для добавления лекции</h3>
+                                                        </div>
+                                                        <div class="comment-form">
+                                                            <form method="POST" action="{% url 'detail' course.id %}" enctype="multipart/form-data">
+                                                              {% csrf_token %}
+                                                                <div class="form-input">
+                                                                    <div class="row">
+                                                                        <div class="col-9">
+                                                                            <div class="wrap-group">
+                                                                              <label for="title">Наименование лекции:</label>
+                                                                              <input type="text" name="title" placeholder="Наименование лекции" required>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-9">
+                                                                            <div class="wrap-group">
+                                                                              <label for="title">Раздел лекции:</label>
+                                                                              <input type="text" name="chapter" placeholder="Раздел лекции" required>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-9">
+                                                                            <div class="wrap-group">
+                                                                              <label for="image">Загрузите видео вашего курса:</label>
+                                                                              <input type="file" name="video" placeholder="Загрузите видео">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-9">
+                                                                            <div class="wrap-group">
+                                                                              <label for="image">Загрузите вложения вашего курса:</label>
+                                                                              <input type="file" name="attachments" placeholder="Загрузите вложения">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="wrap-group">
+                                                                    <input type="submit" class="btn-submit" value="Добавить лекцию">
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                         </div>
                                     </div>
-                                </li>
-                            </ul>
+                                </div>
+                            </section>
+                            {% else %}
+                            {% endif %}
                         </div>
                         <div class="tab-pane fade" id="instructor" role="tabpanel" aria-labelledby="instructor-tab">
                             <div class="instructor-content">

@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
+import magic
+
 
 
 
@@ -54,12 +56,21 @@ class Review(models.Model):
 
 class Lecture(models.Model):
     course = models.ForeignKey('courses.Course', on_delete=models.CASCADE, related_name='lecture')
+    chapter = models.CharField(max_length=100, default="Новый раздел")
     title = models.CharField(max_length=100)
-    discription = models.TextField()
     video = models.FileField(upload_to='videos/', null=True, verbose_name="video")
     attachments = models.FileField(upload_to='attachments/', null=True, verbose_name="attachments")
+
+    # def clean_file(video):
+    #     file = video.cleaned_data.get("file", False)
+    #     filetype = magic.from_buffer(file.read())
+    #     if not "MPEG-4" in filetype:
+    #         raise ValidationError("Файл не имеет формат MPEG-4")
+    #     return file
+
     def __str__(self):
-        return self.title
+        return self.title + ": " + str(self.video)
+
     # attachment =
     # embeded_video =
     # timeinminute =
