@@ -153,7 +153,7 @@
                                 </li>
                                 {% endfor %}
                             </ul>
-                            {% if user.is_authenticated %}
+                            {% if user.is_authenticated and course.instructor == request.user %}
                             <section class="contact-us">
                                 <div class="container">
                                   {% if error %}
@@ -164,7 +164,7 @@
                                                 <div class="contact-form">
                                                     <div class="leave-comment">
                                                         <div class="box-title">
-                                                            <h3 class="title">Заполните форму для добавления лекции</h3>
+                                                            <h5>Для добавления новых лекций заполните форму:</h5>
                                                         </div>
                                                         <div class="comment-form">
                                                             <form method="POST" action="{% url 'detail' course.id %}" enctype="multipart/form-data">
@@ -339,6 +339,54 @@
                                     </div>
                                 </div>
                             </div>
+                            {% if user.is_authenticated and course.instructor != request.user %}
+                            <link href="{% static 'css/reviewform.css' %}" rel="stylesheet">
+                            <section class="contact-us">
+                                <div class="container">
+                                  {% if error %}
+                                  {{ error }}
+                                  {% endif %}
+                                    <div class="contact-us-content">
+                                        <div class="row">
+                                                <div class="contact-form">
+                                                    <div class="leave-comment">
+                                                        <div class="box-title">
+                                                            <h3 class="title">Оставьте пожалуйста отзыв о курсе</h3>
+                                                        </div>
+                                                        <div class="comment-form">
+                                                            <form method="POST" action="{% url 'detail' course.id %}" enctype="multipart/form-data">
+                                                              {% csrf_token %}
+                                                                <div class="form-input">
+                                                                    <div class="row">
+                                                                        <div class="col-9">
+                                                                            <div class="wrap-group">
+                                                                              <label for="text">Ваш комментарий:</label>
+                                                                              <textarea name="text" rows="8" cols="80" placeholder="Введите описание курса" required></textarea>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-9">
+                                                                        <div class="form-group">
+                                                                          <label for="rating" class="col-md-3 control-label">Ваша оценка</label>
+                                                                          <div class="col-md-9">
+                                                                            <input name="rating" id="input-21e" value="0" type="number" class="rating" min=0 max=5 step=0.5 data-size="xs" >
+                                                                          </div>
+                                                                        </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="wrap-group">
+                                                                    <input type="submit" class="btn-submit" value="Оставить отзыв">
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                            {% else %}
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -365,5 +413,7 @@
     </div>
 </section>
 </main>
+<script src="{% static 'js/tabs.js' %}"></script>
+<script src="{% static 'js/reviewform.js' %}"></script>
 
 {% endblock %}

@@ -158,7 +158,7 @@
                     h_offset: 30,
                     v_offset: -75
                 },
-         
+
                 right: {
                     container: 'slider',
                     h_align: 'right',
@@ -365,7 +365,7 @@
             }
         ]
     });
-    
+
 
     /*==================================================================
     [ Play video 01 ]*/
@@ -376,27 +376,27 @@
             defaultW: 640,
             defaultH: 360
         }, options );
-      
+
         $(settings.classBtn).on('click', function(e) {
           var allowFullscreen = $(this).attr('data-bmdVideoFullscreen') || false;
-          
+
           var dataVideo = {
             'src': $(this).attr('data-bmdSrc') + "?autoplay=1",
             'height': $(this).attr('data-bmdHeight') || settings.defaultH,
             'width': $(this).attr('data-bmdWidth') || settings.defaultW
           };
-          
+
           if ( allowFullscreen ) dataVideo.allowfullscreen = "";
-          
+
           // stampiamo i nostri dati nell'iframe
           $(self).find("iframe").attr(dataVideo);
         });
-      
+
         // se si chiude la modale resettiamo i dati dell'iframe per impedire ad un video di continuare a riprodursi anche quando la modale è chiusa
         this.on('hidden.bs.modal', function(){
           $(this).find('iframe').html("").attr("src", "");
         });
-      
+
         return this;
     };
     jQuery("#modal-video-01").bmdIframe();
@@ -430,14 +430,14 @@
                     }
                 });
 
-                
+
 
             }
         }, {offset: 'bottom-in-view'});
     }
 
     var jsTabPro = $('#review');
-   
+
         if (jsTabPro.find('active')) {
             /*progress bar*/
             $('.au-progress-2 .au-progress-bar').progressbar({
@@ -538,8 +538,8 @@
     $('.grouped_elements').fancybox({
 		'transitionIn'	:	'fade',
 		'transitionOut'	:	'fade',
-		'speedIn'		:	600, 
-		'speedOut'		:	600, 
+		'speedIn'		:	600,
+		'speedOut'		:	600,
         'overlayShow'	:	false,
         'width'         : 870,
         'autoDimensions' : false,
@@ -548,12 +548,12 @@
     $('.grouped_elements2').fancybox({
 		'transitionIn'	:	'fade',
 		'transitionOut'	:	'fade',
-		'speedIn'		:	600, 
-		'speedOut'		:	600, 
+		'speedIn'		:	600,
+		'speedOut'		:	600,
         'overlayShow'	:	false,
         'width'         : 870,
         'autoDimensions' : false,
         'centerOnScroll' : true,
-    })
+    });
 
 })(jQuery);
