@@ -40,8 +40,13 @@ def detail(request, course_id):
     course_object=Course.objects.get(pk=course_id)
     rev2=Review.objects.filter(course=course_object).exclude(approved_review=False)
     rev3=rev2.aggregate(Avg('rating'))
-    rev = round(list(rev3.values())[0],1)
+    if list(rev3.values())[0] is None:
+        rev=0
+    else:
+        rev=round(list(rev3.values())[0],1)
+
     reviews=Review.objects.filter(course=course_object).exclude(approved_review=False)
+    reviews_not_appr=Review.objects.filter(course=course_object).exclude(approved_review=True)
     if request.user.is_authenticated:
         lecture=Lecture()
         review=Review()
@@ -62,7 +67,7 @@ def detail(request, course_id):
 
                 # return HttpResponseRedirect(reverse('poll_results', kwargs={'object_id': p.id}))
             else:
-                return render(request, 'courses/detail.html', { 'error': 'Все поля обязательны для заполнения'}, { 'course':course, 'lecture':lecture, 'rev':rev })
+                return render(request, 'courses/detail.html', { 'error': 'Все поля обязательны для заполнения'}, { 'course':course, 'lecture':lecture, 'rev':rev, 'reviews_not_appr':reviews_not_appr })
 
         elif request.method == 'POST':
             if request.POST['text'] and request.POST['rating']:
@@ -79,10 +84,17 @@ def detail(request, course_id):
 
 
         else:
-            return render(request, 'courses/detail.html', {'course': course, 'lectures': lectures, 'reviews': reviews, 'rev':rev })
+            return render(request, 'courses/detail.html', {'course': course, 'lectures': lectures, 'reviews': reviews, 'rev':rev, 'reviews_not_appr':reviews_not_appr})
     else:
         lecture=Lecture()
         course=get_object_or_404(Course, pk=course_id)
         course_object=Course.objects.get(pk=course_id)
         lectures=Lecture.objects.filter(course=course_object)
         return render(request, 'courses/detail.html', {'course': course, 'lectures': lectures, 'reviews': reviews, 'rev':rev })
+
+def reviewbutton(request, course_id):
+    if request.method == 'POST':
+        course_object=Course.objects.get(pk=course_id)
+        review_obj=get_object_or_404(Review, course=course_object)
+        review_obj.approve
+        return redirect('/courses/'+str(course.id))

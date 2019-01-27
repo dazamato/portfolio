@@ -142,17 +142,21 @@
                         </div>
                         <div class="tab-pane fade" id="curriculum" role="tabpanel" aria-labelledby="curriculum-tab">
                             <ul id="curriculum-content" class="curriculum-content">
-                              {% for lecture in lectures.all %}
-                                <li class="card">
-                                    <div class="card-header" id="headingcurriculumTwo">
-                                        <div class="title" data-toggle="collapse" data-target="#curriculumTwo" aria-expanded="true" aria-controls="curriculumTwo" role="button">
-                                            {{ lecture.title }}
-                                        </div>
-                                        <span>0/9</span>
-                                    </div>
-                                </li>
-                                {% endfor %}
-                            </ul>
+                              <li class="card active">
+                                  <div id="curriculumOne" class="collapse show" aria-labelledby="headingcurriculumOne" data-parent="#curriculum-content">
+                                      <div class="card-body content">
+                                          <ul>
+                                            {% for lecture in lectures.all %}
+                                              <li>
+                                                  <a href="#">
+                                                      <h5 class="title">{{ lecture.title }}</h5>
+                                                  </a>
+                                              </li>
+                                            {% endfor %}
+                                          </ul>
+                                      </div>
+                                  </div>
+                              </li>
                             {% if user.is_authenticated and course.instructor == request.user %}
                             <section class="contact-us">
                                 <div class="container">
@@ -399,6 +403,30 @@
                                 </div>
                             </section>
                             {% else %}
+                            <h4 class="title">Ждут вашего одобрения следующие отзывы:</h4>
+
+                            {% for appr in reviews_not_appr %}
+                            <div class="col-9">
+                            <div class="card-body content">
+                                <ul>
+                                    <li>
+                                        <a href="#">
+                                            <span><i class="fas fa-smile"></i>{{ appr.author }}</span>
+                                            <p>{{ appr.text }}</p>
+                                        </a>
+                                        <span class="finished">{{ appr.rating }}</span>
+                                    </li>
+                                </ul>
+                             </div>
+                             </div>
+                             <div class="col-3">
+                               <a href="javascript:{document.getElementById('reviewbutton{{ course.id }}').submit()}" class="au-btn au-btn-small">Одобрить отзыв</a>
+                             </div>
+                             <form id="reviewbutton{{ course.id }}" method="post" action="{% url 'review' course.id %}">
+                               {% csrf_token %}
+                               <input type="hidden" name="" value="">
+                              </form>
+                             {% endfor %}
                             {% endif %}
                         </div>
                     </div>
