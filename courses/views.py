@@ -95,6 +95,7 @@ def detail(request, course_id):
 def reviewbutton(request, course_id):
     if request.method == 'POST':
         course_object=Course.objects.get(pk=course_id)
-        review_obj=get_object_or_404(Review, course=course_object)
-        review_obj.approve
+        review_obj=get_object_or_404(Review, course=course_object) # need additional filter to targetting save of the model
+        review_obj.approved_review = True
+        review_obj.save()
         return redirect('/courses/'+str(course.id))
