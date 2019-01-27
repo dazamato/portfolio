@@ -248,42 +248,42 @@
                         <div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
                             <div class="review-content">
                                 <div class="average-rating background-grey ">
-                                    <h4 class="title">Average Rating:</h4>
+                                    <h4 class="title">Средний рейтинг:</h4>
                                     <div class="count-rating">
-                                        <span class="rating">{{ course.rating }}</span>
+                                        <span class="rating">{{ rev }}</span>
                                         <span class="total-rating">5</span>
                                     </div>
                                     <div class="rating-star">
-                                        {% if course.rating <= 1 %}
+                                        {% if rev < 1 %}
+                                        <span class="star-rate notrated"><i class="fas fa-star"></i></span>
+                                        <span class="star-rate notrated"><i class="fas fa-star"></i></span>
+                                        <span class="star-rate notrated"><i class="fas fa-star"></i></span>
+                                        <span class="star-rate notrated"><i class="fas fa-star"></i></span>
+                                        <span class="star-rate notrated"><i class="fas fa-star"></i></span>
+                                        {% elif rev < 2 %}
                                         <span class="star-rate rated"><i class="fas fa-star"></i></span>
                                         <span class="star-rate notrated"><i class="fas fa-star"></i></span>
                                         <span class="star-rate notrated"><i class="fas fa-star"></i></span>
                                         <span class="star-rate notrated"><i class="fas fa-star"></i></span>
                                         <span class="star-rate notrated"><i class="fas fa-star"></i></span>
-                                        {% elif course.rating <= 2 %}
+                                        {% elif rev < 3 %}
                                         <span class="star-rate rated"><i class="fas fa-star"></i></span>
                                         <span class="star-rate rated"><i class="fas fa-star"></i></span>
                                         <span class="star-rate notrated"><i class="fas fa-star"></i></span>
                                         <span class="star-rate notrated"><i class="fas fa-star"></i></span>
                                         <span class="star-rate notrated"><i class="fas fa-star"></i></span>
-                                        {% elif course.rating <= 3 %}
+                                        {% elif rev < 4 %}
                                         <span class="star-rate rated"><i class="fas fa-star"></i></span>
                                         <span class="star-rate rated"><i class="fas fa-star"></i></span>
                                         <span class="star-rate rated"><i class="fas fa-star"></i></span>
                                         <span class="star-rate notrated"><i class="fas fa-star"></i></span>
                                         <span class="star-rate notrated"><i class="fas fa-star"></i></span>
-                                        {% elif course.rating <= 4 %}
+                                        {% elif rev < 5 %}
                                         <span class="star-rate rated"><i class="fas fa-star"></i></span>
                                         <span class="star-rate rated"><i class="fas fa-star"></i></span>
                                         <span class="star-rate rated"><i class="fas fa-star"></i></span>
                                         <span class="star-rate rated"><i class="fas fa-star"></i></span>
                                         <span class="star-rate notrated"><i class="fas fa-star"></i></span>
-                                        {% elif course.rating <= 5 %}
-                                        <span class="star-rate rated"><i class="fas fa-star"></i></span>
-                                        <span class="star-rate rated"><i class="fas fa-star"></i></span>
-                                        <span class="star-rate rated"><i class="fas fa-star"></i></span>
-                                        <span class="star-rate rated"><i class="fas fa-star"></i></span>
-                                        <span class="star-rate rated"><i class="fas fa-star"></i></span>
                                         {% else %}
                                         <span class="star-rate rated"><i class="fas fa-star"></i></span>
                                         <span class="star-rate rated"><i class="fas fa-star"></i></span>
@@ -294,7 +294,7 @@
                                     </div>
                                 </div>
                                 <div class="rating-breakdown js-waypoint">
-                                    <h4 class="title">Rating Breakdown</h4>
+                                    <h4 class="title">Разбивка рейтинга</h4>
                                     <div class="progress-bar">
                                         <div class="progress-box">
                                             <div class="au-progress au-progress-2">
@@ -339,6 +339,19 @@
                                     </div>
                                 </div>
                             </div>
+                            {% for review in reviews %}
+                            <div class="card-body content">
+                                <ul>
+                                    <li>
+                                        <a href="#">
+                                            <span><i class="fas fa-smile"></i>{{ review.author }}</span>
+                                            <p>{{ review.text }}</p>
+                                        </a>
+                                        <span class="finished">{{ review.rating }}</span>
+                                    </li>
+                                </ul>
+                             </div>
+                             {% endfor %}
                             {% if user.is_authenticated and course.instructor != request.user %}
                             <link href="{% static 'css/reviewform.css' %}" rel="stylesheet">
                             <section class="contact-us">

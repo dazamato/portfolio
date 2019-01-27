@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.db.models import Avg, Max, Min, Sum
+import numpy as np
 from .models import Course, Lecture, Review
 from django.utils import timezone
 
@@ -35,13 +37,17 @@ def create(request):
 
 
 def detail(request, course_id):
+    course_object=Course.objects.get(pk=course_id)
+    rev2=Review.objects.filter(course=course_object).exclude(approved_review=False)
+    rev3=rev2.aggregate(Avg('rating'))
+    rev = round(list(rev3.values())[0],1)
+    reviews=Review.objects.filter(course=course_object).exclude(approved_review=False)
     if request.user.is_authenticated:
         lecture=Lecture()
         review=Review()
         course=get_object_or_404(Course, pk=course_id)
         course_object=Course.objects.get(pk=course_id)
         lectures=Lecture.objects.filter(course=course_object)
-        reviews=Review.objects.filter(course=course_object)
         if course.instructor == request.user and request.method == 'POST':
             if request.POST['title'] and request.POST['chapter'] and request.FILES['video'] and request.FILES['attachments']:
                 course_object=Course.objects.get(pk=course_id)
@@ -56,7 +62,7 @@ def detail(request, course_id):
 
                 # return HttpResponseRedirect(reverse('poll_results', kwargs={'object_id': p.id}))
             else:
-                return render(request, 'courses/detail.html', { 'error': 'Все поля обязательны для заполнения'}, { 'course':course, 'lecture':lecture })
+                return render(request, 'courses/detail.html', { 'error': 'Все поля обязательны для заполнения'}, { 'course':course, 'lecture':lecture, 'rev':rev })
 
         elif request.method == 'POST':
             if request.POST['text'] and request.POST['rating']:
@@ -69,14 +75,14 @@ def detail(request, course_id):
                 review.save()
                 return redirect('/courses/'+str(course.id))
             else:
-                return render(request, 'courses/detail.html', { 'error': 'Все поля обязательны для заполнения'}, { 'course':course, 'lectures':lectures, 'reviews':reviews, })
+                return render(request, 'courses/detail.html', { 'error': 'Все поля обязательны для заполнения'}, { 'course':course, 'lectures':lectures, 'reviews':reviews, 'rev':rev})
 
 
         else:
-            return render(request, 'courses/detail.html', {'course': course, 'lectures': lectures, 'reviews': reviews })
+            return render(request, 'courses/detail.html', {'course': course, 'lectures': lectures, 'reviews': reviews, 'rev':rev })
     else:
         lecture=Lecture()
         course=get_object_or_404(Course, pk=course_id)
         course_object=Course.objects.get(pk=course_id)
         lectures=Lecture.objects.filter(course=course_object)
-        return render(request, 'courses/detail.html', {'course': course, 'lectures': lectures })
+        return render(request, 'courses/detail.html', {'course': course, 'lectures': lectures, 'reviews': reviews, 'rev':rev })

@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Avg, Max, Min, Sum
 from django.contrib.auth.models import User
 from django.utils import timezone
 import magic
@@ -15,7 +16,7 @@ class Course(models.Model):
     discription = models.TextField(max_length=300)
     mission = models.TextField(max_length=300)
     outcomes = models.TextField(max_length=300)
-    rating = models.IntegerField(default=5)
+    rating = models.IntegerField(default=0)
     pub_date = models.DateTimeField()
     # url = models.CharField(max_length=100)
     # class Category_choice(models.Model):
