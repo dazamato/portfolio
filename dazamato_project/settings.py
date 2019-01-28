@@ -51,7 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    
+
 ]
 
 ROOT_URLCONF = 'dazamato_project.urls'
@@ -81,7 +81,7 @@ WSGI_APPLICATION = 'dazamato_project.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": "dazamatodb",
+        "NAME": "dazamatoprojdb",
         "USER": "postgres",
         "PASSWORD": "Jk1mqokn",
         "HOST": "localhost",
@@ -121,7 +121,7 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = False
-
+AUTH_USER_MODEL = 'accounts.User'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/

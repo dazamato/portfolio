@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from django.contrib import auth
 
+User = get_user_model()
 def signup(request):
     if request.method == 'POST':
         if request.POST['password1'] == request.POST['password2']:

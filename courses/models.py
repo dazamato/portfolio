@@ -1,6 +1,6 @@
 from django.db import models
 from django.db.models import Avg, Max, Min, Sum
-from django.contrib.auth.models import User
+from django.conf import settings
 from django.utils import timezone
 import magic
 
@@ -12,7 +12,7 @@ class Course(models.Model):
     # isfree = models.BooleanField()
     price = models.IntegerField()
     image = models.ImageField(upload_to='images/')
-    instructor = models.ForeignKey(User, on_delete=models.CASCADE)
+    instructor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     discription = models.TextField(max_length=300)
     mission = models.TextField(max_length=300)
     outcomes = models.TextField(max_length=300)
@@ -41,7 +41,7 @@ class Course(models.Model):
 
 class Review(models.Model):
     course = models.ForeignKey('courses.Course', on_delete=models.CASCADE, related_name='review')
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     text = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)
     approved_review = models.BooleanField(default=False)
