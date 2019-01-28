@@ -402,9 +402,8 @@
                                     </div>
                                 </div>
                             </section>
-                            {% else %}
-                            <h4 class="title">Ждут вашего одобрения следующие отзывы:</h4>
-
+                            {% elif user.is_authenticated and course.instructor == request.user %}
+                            <h4 class="title">Ждут вашего одобрения следующие отзывы: {{ reviews_not_appr|length }}</h4>
                             {% for appr in reviews_not_appr %}
                             <div class="col-9">
                             <div class="card-body content">
@@ -422,11 +421,12 @@
                              <div class="col-3">
                                <a href="javascript:{document.getElementById('reviewbutton{{ course.id }}').submit()}" class="au-btn au-btn-small">Одобрить отзыв</a>
                              </div>
-                             <form id="reviewbutton{{ course.id }}" method="post" action="{% url 'reviewbutton' course.id %}">
+                             <form id="reviewbutton{{ course.id }}" method="post" action="{% url 'reviewbutton' course.id appr.id %}">
                                {% csrf_token %}
                                <input type="hidden" name="" value="">
                               </form>
                              {% endfor %}
+                            {% else %}
                             {% endif %}
                         </div>
                     </div>

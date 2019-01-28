@@ -92,10 +92,12 @@ def detail(request, course_id):
         lectures=Lecture.objects.filter(course=course_object)
         return render(request, 'courses/detail.html', {'course': course, 'lectures': lectures, 'reviews': reviews, 'rev':rev })
 
-def reviewbutton(request, course_id):
+def reviewbutton(request, course_id, appr_id):
     if request.method == 'POST':
         course_object=Course.objects.get(pk=course_id)
-        review_obj=get_object_or_404(Review, course=course_object) # need additional filter to targetting save of the model
+        course=get_object_or_404(Course, pk=course_id)
+        appr_object=Review.objects.get(pk=appr_id)
+        review_obj=get_object_or_404(Review, course=course_object, pk=appr_object.pk) # need additional filter to targetting save of the model
         review_obj.approved_review = True
         review_obj.save()
         return redirect('/courses/'+str(course.id))
