@@ -138,3 +138,9 @@ try:
     from .local_settings import *
 except ImportError:
     pass
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'dazamatoemail@gmail.com'
+EMAIL_HOST_PASSWORD = 'Jk1mqokn'
+EMAIL_PORT = 587
