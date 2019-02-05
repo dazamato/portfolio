@@ -43,12 +43,14 @@
                                             <div class="row">
                                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                                                     <div class="wrap-group">
-                                                        <input type="text" name="username" placeholder="Ваш username" required>
+                                                      <i class="fas fa-user"></i>
+                                                      <input type="text" name="username" placeholder="Ваш username" required>
                                                     </div>
                                                 </div>
                                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                                                     <div class="wrap-group">
-                                                        <input type="password" name="password" placeholder="Ваш пароль" required>
+                                                      <i class="fas fa-user"></i>
+                                                      <input type="password" name="password" placeholder="Ваш пароль" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -58,6 +60,9 @@
                                             <input type="submit" class="btn-submit" value="Ввойти">
                                         </div>
                                     </form>
+                                    <div class="container">
+                                      <a href="{% url 'password_reset_recover' %}">Забыли пароль?</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>

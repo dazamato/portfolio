@@ -18,14 +18,14 @@ def signup(request):
     if request.method == 'POST':
         if request.POST['password1'] == request.POST['password2']:
             try:
-                user=User.objects.get(username=request.POST['username'])
-                return render(request, 'accounts/signup.html', { 'error': 'username уже существует'})
+                user=User.objects.get(email=request.POST['email'])
+                return render(request, 'accounts/signup.html', { 'error': 'email уже зарегистрирован'})
             except User.DoesNotExist:
                 user=User.objects.create_user(request.POST['username'], password=request.POST['password1'], email=request.POST['email'])
                 user.is_active = False
                 user.save()
                 current_site = get_current_site(request)
-                mail_subject = 'Activate your blog account.'
+                mail_subject = 'Активация вашей учетной записи.'
                 message = render_to_string('accounts/acc_active_email.html', {
                     'user': user,
                     'domain': current_site.domain,
@@ -37,7 +37,7 @@ def signup(request):
                             mail_subject, message, to=[to_email]
                 )
                 email.send()
-                return render(request, 'accounts/login.html', { 'info': 'Спасибо за регистрацию! Проверьте пожалуйста вашу эелектронную почту, на нее выслано письмо подтверждения вашего email. После подтверждения вашего email вы сможете авторизоваться автоматически.', 'jobs': jobs, 'courses': courses })
+                return render(request, 'accounts/login.html', { 'info': 'Спасибо за регистрацию! Проверьте пожалуйста вашу эелектронную почту, на нее выслано письмо подтверждения вашего email. После подтверждения вашего email вы сможете авторизоваться автоматически.'})
                 # auth.login(request, user)
                 # return redirect('home')
         else:
@@ -68,6 +68,8 @@ def logout(request):
     return render(request, 'accounts/signup.html')
 
 def activate(request, uidb64, token):
+    jobs = Job.objects
+    courses=Course.objects
     try:
         uid = force_text(urlsafe_base64_decode(uidb64))
         user = User.objects.get(pk=uid)
@@ -78,6 +80,46 @@ def activate(request, uidb64, token):
         user.save()
         auth.login(request, user)
         # return redirect('home')
-        return render(request, 'jobs/home.html', { 'info': 'Спасибо за подтверждение вашего email, теперь вы авторизованы на сайте! Отличного вам обучения!'})
+        return render(request, 'jobs/home.html', { 'info': 'Спасибо за подтверждение вашего email, теперь вы авторизованы на сайте!', 'jobs': jobs, 'courses': courses })
     else:
         return render(request, 'accounts/login.html', { 'info': 'Вы прошли по не валидной ссылке.'})
+
+
+# def passwordchange(request):
+#     if request.method == 'POST':
+#         user=User.objects.get(email=request.POST['email'])
+#         current_site = get_current_site(request)
+#         mail_subject = 'Сброс пароля'
+#         message = render_to_string('accounts/passwordemail.html', {
+#             'user': user,
+#             'domain': current_site.domain,
+#             'uid':urlsafe_base64_encode(force_bytes(user.pk)).decode(),
+#             'token':account_activation_token.make_token(user),
+#         })
+#         to_email = request.POST['email']
+#         email = EmailMessage(
+#                     mail_subject, message, to=[to_email]
+#         )
+#         email.send()
+#         return render(request, 'accounts/passwordchange.html', { 'info': 'Проверьте пожалуйста вашу эелектронную почту, на нее выслана ссылка на сброс пароля'})
+#     else:
+#         return render(request, 'accounts/passwordchange.html')
+#
+# def password(request, uidb64, token):
+#     try:
+#         uid = force_text(urlsafe_base64_decode(uidb64))
+#         user = User.objects.get(pk=uid)
+#     except(TypeError, ValueError, OverflowError, User.DoesNotExist):
+#         user = None
+#     if user is not None and account_activation_token.check_token(user, token):
+#         if request.method == 'POST':
+#             if request.POST['password1'] == request.POST['password2']:
+#                 user.set_password(request.POST['password1'])
+#                 user.save()
+#                 return render(request, 'jobs/home.html', { 'info': 'Вы успешно сменили пароль!', 'jobs': jobs, 'courses': courses })
+#             else:
+#                 return render(request, 'accounts/password.html', { 'info': 'Пароли не совпадают'})
+#         else:
+#             return render(request, 'accounts/pasword.html')
+#     else:
+#         return render(request, 'jobs/home.html', { 'info': 'Вы прошли по не валидной ссылке'})

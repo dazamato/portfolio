@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'password_reset',
     'jobs',
     'blog',
     'accounts',
@@ -81,7 +82,7 @@ WSGI_APPLICATION = 'dazamato_project.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": "dazamatoprojdb",
+        "NAME": "dazamatonewdb",
         "USER": "postgres",
         "PASSWORD": "Jk1mqokn",
         "HOST": "localhost",
@@ -138,6 +139,7 @@ try:
     from .local_settings import *
 except ImportError:
     pass
+
 
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
