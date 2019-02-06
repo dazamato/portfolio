@@ -27,8 +27,8 @@
           {{ error }}
           {% endif %}
           <ul class="messages">
-              {% for message in messages %}
-              <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+              {% for errorvalid in errorvalids %}
+              <li>{{ errorvalid }}</li>
               {% endfor %}
           </ul>
             <div class="contact-us-content">
@@ -38,47 +38,58 @@
                                 <div class="box-title">
                                     <h3 class="title">Зарегиструйтесь сейчас бесплатно!</h3>
                                 </div>
-                                <div class="comment-form">
-                                  <div class="form-heading">
-                                      <p>И получите более 100 онлайн курсов!<p>
+                                <div class="container">
+                                  <div class="row">
+                                    <div class="col">
+                                      <div class="comment-form">
+                                        <div class="form-heading">
+                                            <p>И получите более 100 онлайн курсов!<p>
+                                        </div>
+                                          <form method="POST" action="{% url 'signup' %}">
+                                            {{ form.non_field_errors }}
+                                            {% csrf_token %}
+                                              <div class="form-input">
+                                                  <div class="row">
+                                                      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                                          <div class="wrap-group">
+                                                              <i class="fas fa-user"></i>
+                                                              <input type="text" name="username" placeholder="Ваш username" required>
+                                                          </div>
+                                                      </div>
+                                                      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                                          <div class="wrap-group">
+                                                              <i class="fas fa-envelope"></i>
+                                                              <input type="email" name="email" placeholder="Ваш Email" required>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                                  <div class="row">
+                                                      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                                          <div class="wrap-group">
+                                                              <i class="fas fa-lock"></i>
+                                                              <input type="password" name="password1" placeholder="Придумайте пороль" required>
+                                                          </div>
+                                                      </div>
+                                                      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                                          <div class="wrap-group">
+                                                              <i class="fas fa-lock"></i>
+                                                              <input type="password" name="password2" placeholder="Подтвердите пороль" required>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="wrap-group">
+                                                  <input type="submit" class="btn-submit" value="Зарегистрироваться">
+                                              </div>
+                                          </form>
+                                      </div>
+                                    </div>
+                                    <div class="col">
+                                      <h4>Для защиты вашей учетной записи пороль должен быть следующий:</h4>
+                                      <li> Пароль должен содержать как минимум 9 символов </li>
+                                      <li> Пароль должен содержать хотя бы одну цифру либо одну букву </li>
+                                    </div>
                                   </div>
-                                    <form method="POST" action="{% url 'signup' %}">
-                                      {{ form.non_field_errors }}
-                                      {% csrf_token %}
-                                        <div class="form-input">
-                                            <div class="row">
-                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                                                    <div class="wrap-group">
-                                                        <i class="fas fa-user"></i>
-                                                        <input type="text" name="username" placeholder="Ваш username" required>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                                                    <div class="wrap-group">
-                                                        <i class="fas fa-envelope"></i>
-                                                        <input type="email" name="email" placeholder="Ваш Email" required>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                                                    <div class="wrap-group">
-                                                        <i class="fas fa-lock"></i>
-                                                        <input type="password" name="password1" placeholder="Придумайте пороль" required>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                                                    <div class="wrap-group">
-                                                        <i class="fas fa-lock"></i>
-                                                        <input type="password" name="password2" placeholder="Подтвердите пороль" required>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="wrap-group">
-                                            <input type="submit" class="btn-submit" value="Зарегистрироваться">
-                                        </div>
-                                    </form>
                                 </div>
                             </div>
                         </div>

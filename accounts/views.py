@@ -29,7 +29,7 @@ def signup(request):
                 except ValidationError as e:
                     errors['password1']=list(e.messages)
                 if errors:
-                    return render(request, 'accounts/signup.html', { 'error': errors })
+                    return render(request, 'accounts/signup.html', { 'errorvalids': errors['password1'] })
                 else:
                     user=User.objects.create_user(request.POST['username'], password=request.POST['password1'], email=request.POST['email'])
                     user.is_active = False
