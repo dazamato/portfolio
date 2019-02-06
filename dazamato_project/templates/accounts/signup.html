@@ -26,6 +26,11 @@
           {% if error %}
           {{ error }}
           {% endif %}
+          <ul class="messages">
+              {% for message in messages %}
+              <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+              {% endfor %}
+          </ul>
             <div class="contact-us-content">
                 <div class="row">
                         <div class="contact-form">
@@ -38,6 +43,7 @@
                                       <p>И получите более 100 онлайн курсов!<p>
                                   </div>
                                     <form method="POST" action="{% url 'signup' %}">
+                                      {{ form.non_field_errors }}
                                       {% csrf_token %}
                                         <div class="form-input">
                                             <div class="row">

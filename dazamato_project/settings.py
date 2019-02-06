@@ -146,3 +146,22 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'dazamatoemail@gmail.com'
 EMAIL_HOST_PASSWORD = 'Jk1mqokn'
 EMAIL_PORT = 587
+
+AUTH_PASSWORD_VALIDATORS = [
+    {
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'OPTIONS': {
+            'min_length': 9,
+        }
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    },
+]
+# MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
