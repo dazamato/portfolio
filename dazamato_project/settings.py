@@ -82,7 +82,7 @@ WSGI_APPLICATION = 'dazamato_project.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": "dazamatonewdb",
+        "NAME": "dazamato1",
         "USER": "postgres",
         "PASSWORD": "Jk1mqokn",
         "HOST": "localhost",

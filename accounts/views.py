@@ -20,34 +20,38 @@ def signup(request):
     if request.method == 'POST':
         if request.POST['password1'] == request.POST['password2']:
             try:
-                user=User.objects.get(email=request.POST['email'])
-                return render(request, 'accounts/signup.html', { 'error': 'email уже зарегистрирован'})
+                user=User.objects.get(username=request.POST['username'])
+                return render(request, 'accounts/signup.html', { 'error': 'username уже занят'})
             except User.DoesNotExist:
-                errors={}
                 try:
-                    validate_password(request.POST['password1'], user=None, password_validators=None)
-                except ValidationError as e:
-                    errors['password1']=list(e.messages)
-                if errors:
-                    return render(request, 'accounts/signup.html', { 'errorvalids': errors['password1'] })
-                else:
-                    user=User.objects.create_user(request.POST['username'], password=request.POST['password1'], email=request.POST['email'])
-                    user.is_active = False
-                    user.save()
-                    current_site = get_current_site(request)
-                    mail_subject = 'Активация вашей учетной записи.'
-                    message = render_to_string('accounts/acc_active_email.html', {
-                        'user': user,
-                        'domain': current_site.domain,
-                        'uid':urlsafe_base64_encode(force_bytes(user.pk)).decode(),
-                        'token':account_activation_token.make_token(user),
-                    })
-                    to_email = request.POST['email']
-                    email = EmailMessage(
-                                mail_subject, message, to=[to_email]
-                    )
-                    email.send()
-                    return render(request, 'accounts/login.html', { 'info': 'Спасибо за регистрацию! Проверьте пожалуйста вашу эелектронную почту, на нее выслано письмо подтверждения вашего email. После подтверждения вашего email вы сможете авторизоваться автоматически.'})
+                    user=User.objects.get(email=request.POST['email'])
+                    return render(request, 'accounts/signup.html', { 'error': 'email уже зарегистрирован'})
+                except User.DoesNotExist:
+                    errors={}
+                    try:
+                        validate_password(request.POST['password1'], user=None, password_validators=None)
+                    except ValidationError as e:
+                        errors['password1']=list(e.messages)
+                    if errors:
+                        return render(request, 'accounts/signup.html', { 'errorvalids': errors['password1'] })
+                    else:
+                        user=User.objects.create_user(request.POST['username'], password=request.POST['password1'], email=request.POST['email'])
+                        user.is_active = False
+                        user.save()
+                        current_site = get_current_site(request)
+                        mail_subject = 'Активация вашей учетной записи.'
+                        message = render_to_string('accounts/acc_active_email.html', {
+                            'user': user,
+                            'domain': current_site.domain,
+                            'uid':urlsafe_base64_encode(force_bytes(user.pk)).decode(),
+                            'token':account_activation_token.make_token(user),
+                        })
+                        to_email = request.POST['email']
+                        email = EmailMessage(
+                                    mail_subject, message, to=[to_email]
+                        )
+                        email.send()
+                        return render(request, 'accounts/login.html', { 'info': 'Спасибо за регистрацию! Проверьте пожалуйста вашу эелектронную почту, на нее выслано письмо подтверждения вашего email. После подтверждения вашего email вы сможете авторизоваться автоматически.'})
                 # else:
                 #     return render(request, 'accounts/signup.html', { 'error': django.core.exceptions.ValidationError})
                 # auth.login(request, user)
@@ -96,6 +100,11 @@ def activate(request, uidb64, token):
     else:
         return render(request, 'accounts/login.html', { 'info': 'Вы прошли по не валидной ссылке.'})
 
+from django.shortcuts import render
+
+def get_user_profile(request, username):
+    user = User.objects.get(username=username)
+    return render(request, 'accounts/user_profile.html', {"user":user})
 
 # def passwordchange(request):
 #     if request.method == 'POST':

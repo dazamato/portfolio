@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load staticfiles %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<!--
+User Profile Sidebar by @keenthemes
+A component of Metronic Theme - #1 Selling Bootstrap 3 Admin Theme in Themeforest: http://j.mp/metronictheme
+Licensed under MIT
+-->
+<section class="heading-page">
+    <img src="{% static 'Banner.jpg' %}" alt="">
+    <div class="container">
+        <div class="heading-page-content">
+            <div class="au-page-title">
+                <h1>Личный кабинет {{ user.username }}</h1>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="container">
+    <div class="row profile">
+		<div class="col-md-3">
+			<div class="profile-sidebar">
+				<!-- SIDEBAR USERPIC -->
+				<div class="profile-userpic">
+					<img src="{{ user.image.url }}" class="img-responsive" alt="">
+				</div>
+				<!-- END SIDEBAR USERPIC -->
+				<!-- SIDEBAR USER TITLE -->
+				<div class="profile-usertitle">
+					<div class="profile-usertitle-name">
+						{{ user.username }}
+					</div>
+					<div class="profile-usertitle-job">
+						{{ user.email }}
+					</div>
+				</div>
+				<!-- END SIDEBAR USER TITLE -->
+				<!-- SIDEBAR BUTTONS -->
+				<div class="profile-userbuttons">
+					<button type="button" class="btn btn-success btn-sm">Подписаться</button>
+					<button type="button" class="btn btn-danger btn-sm">Наисать</button>
+				</div>
+				<!-- END SIDEBAR BUTTONS -->
+				<!-- SIDEBAR MENU -->
+				<div class="profile-usermenu">
+					<ul class="nav">
+						<li class="active">
+							<a href="#">
+							<i class="fas fa-spinner"></i>
+							Подписанные курсы </a>
+						</li>
+						<li>
+							<a href="#">
+							<i class="fas fa-clipboard-check"></i>
+							Пройденные курсы </a>
+						</li>
+						<li>
+							<a href="#" target="_blank">
+							<i class="fas fa-upload"></i>
+							Опубликованные курсы </a>
+						</li>
+            <li>
+              <a href="#" target="_blank">
+              <i class="far fa-sticky-note"></i>
+              Не опубликованные курсы </a>
+            </li>
+						<li>
+							<a href="#">
+							<i class="fas fa-sliders-h"></i>
+							Настройки учетной записи </a>
+						</li>
+					</ul>
+				</div>
+				<!-- END MENU -->
+			</div>
+		</div>
+		<div class="col-md-9">
+            <div class="profile-content">
+			   <!-- Some user related content goes here... -->
+             {{ user.first_name }}
+             {{ user.last_name }}
+             {{ user.bio }}
+             {{ user.phone }}
+            </div>
+		</div>
+	</div>
+</div>
+
+<br>
+<br>
+{% endblock %}
