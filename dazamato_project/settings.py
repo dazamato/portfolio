@@ -142,9 +142,10 @@ except ImportError:
 
 
 EMAIL_USE_TLS = True
+# EMAIL_USE_SSL = True
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'dazamatoemail@gmail.com'
-EMAIL_HOST_PASSWORD = 'Jk1mqokn'
+EMAIL_HOST_USER = 'dazamato@gmail.com'
+EMAIL_HOST_PASSWORD = '3Ykjod01!'
 EMAIL_PORT = 587
 
 AUTH_PASSWORD_VALIDATORS = [
