@@ -4,6 +4,7 @@ from django.contrib import auth
 from django.http import HttpResponse
 from django.contrib.sites.shortcuts import get_current_site
 from django.utils.encoding import force_bytes, force_text
+import base64
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.template.loader import render_to_string
 from .tokens import account_activation_token
@@ -43,8 +44,8 @@ def signup(request):
                         message = render_to_string('accounts/acc_active_email.html', {
                             'user': user,
                             'domain': current_site.domain,
-                            'uid':urlsafe_base64_encode(force_bytes(user.pk)).decode(),
-                            'token':account_activation_token.make_token(user),
+                            'uid': urlsafe_base64_encode(force_bytes(user.pk)) ,
+                            'token': account_activation_token.make_token(user),
                         })
                         to_email = request.POST['email']
                         email = EmailMessage(
@@ -87,7 +88,7 @@ def activate(request, uidb64, token):
     jobs = Job.objects
     courses=Course.objects
     try:
-        uid = force_text(urlsafe_base64_decode(uidb64))
+        uid = force_text(urlsafe_base64_decode())
         user = User.objects.get(pk=uid)
     except(TypeError, ValueError, OverflowError, User.DoesNotExist):
         user = None
