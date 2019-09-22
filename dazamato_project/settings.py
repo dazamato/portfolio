@@ -25,7 +25,7 @@ SECRET_KEY = '=rv6#8q0p_^4n2aoyj*^_)2(ng+&c1n3x!(he$+7-$u)5fh7km'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -142,7 +142,7 @@ except ImportError:
 
 
 EMAIL_USE_TLS = True
-# EMAIL_USE_SSL = True
+#EMAIL_USE_SSL = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'dazamato@gmail.com'
 EMAIL_HOST_PASSWORD = '3Ykjod01!'
