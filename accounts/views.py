@@ -44,7 +44,7 @@ def signup(request):
                         message = render_to_string('accounts/acc_active_email.html', {
                             'user': user,
                             'domain': current_site.domain,
-                            'uid': urlsafe_base64_encode(force_bytes(user.pk)) ,
+                            'uid': urlsafe_base64_encode(force_bytes(user.pk)),
                             'token': account_activation_token.make_token(user),
                         })
                         to_email = request.POST['email']
@@ -88,7 +88,7 @@ def activate(request, uidb64, token):
     jobs = Job.objects
     courses=Course.objects
     try:
-        uid = force_text(urlsafe_base64_decode())
+        uid = force_text(urlsafe_base64_decode(uidb64))
         user = User.objects.get(pk=uid)
     except(TypeError, ValueError, OverflowError, User.DoesNotExist):
         user = None
