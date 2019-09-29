@@ -179,9 +179,23 @@
                     </button>
                 </div>
             </div>
-<!--            <div class="au-nav-mobile">-->
-<!--                <nav class="menu-mobile">-->
-<!--                    <div>-->
+            <div class="au-nav-mobile">
+                <nav class="menu-mobile">
+                    <div class="header-top-account">
+                        {% if user.is_authenticated %}
+                        <a href="{% url 'profile' username=request.user.username %}" class="signup"><i class="fas fa-user"></i>{{ user.username }}</a>
+                        <a href="javascript:{document.getElementById('logout').submit()}" class="logout"><i class="fas fa-sign-out-alt"></i>Выйти</a>
+                        <a href="{% url 'create' %}" class="signup"><i class="fas fa-plus-square"></i>Создать курс</a>
+                        <form id="logout" method="POST" action="{% url 'logout' %}">
+                          {% csrf_token %}
+                          <input type="hidden" />
+                        </form>
+
+                        {% else %}
+                        <a href="{% url 'login' %}" class="login"><i class="fas fa-user"></i>Войти</a>
+                        <a href="{% url 'signup' %}" class="signup"><i class="fas fa-edit"></i>Регистрация</a>
+                        {% endif %}
+                    </div>
 <!--                        <ul class="au-navbar-menu">-->
 <!--                            <li class="menu-item curent-menu-item">-->
 <!--                                <a href="index.html">Demo</a>-->
