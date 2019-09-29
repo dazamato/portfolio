@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load staticfiles %}
+
+{% block title %}{% trans "Password recovery" %}{% endblock %}
+
+{% block content %}
+    <section class="heading-page">
+        <img src="{% static 'Banner.jpg' %}" alt="">
+        <div class="container">
+            <div class="heading-page-content">
+                <div class="au-page-title">
+                    <h1>Восстановление пароля</h1>
+                </div>
+                <nav aria-label="breadcrumb">
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'login' %}">Ввойти в личный кабинет</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Восстановление пароля</li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </section>
+<br>
+<div class="container" align="center">
+	<h3>
+		Введите ваш username или email для того чтобы мы выслали вам на почту ссылку для восстановления пароля:
+	</h3>
+	<form method="post" action="{{ url }}">
+		{% csrf_token %}
+		{{ form.as_p }}
+		<p><input type="submit" class="au-btn view-all" value="{% trans "Recover my password" %}"></p>
+	</form>
+</div>
+<br>
+{% endblock %}
