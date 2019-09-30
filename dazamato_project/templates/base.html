@@ -75,83 +75,6 @@
                               <img src="{% static 'Logo_new.png'%}" height="120" width="240" alt="Edumat" class="d-inline-block align-top" />
                             </a>
                         </div>
-<!--                        <div class="menu-search display-flex">-->
-<!--                            <nav class="menu">-->
-<!--                                <div>-->
-<!--                                    <ul class="menu-primary">-->
-<!--                                        <li class="menu-item curent-menu-item">-->
-<!--                                            <a href="index.html">Demo</a>-->
-<!--                                            <ul class="sub-menu">-->
-<!--                                                <li class="menu-item"><a href="index.html">Home 1</a></li>-->
-<!--                                                <li class="menu-item"><a href="index2.html">Home 2</a></li>-->
-<!--                                                <li class="menu-item"><a href="index3.html">Home 3</a></li>-->
-<!--                                            </ul>-->
-<!--                                        </li>-->
-<!--                                        <li class="menu-item">-->
-<!--                                            <a href="courses1.html">Courses</a>-->
-<!--                                            <ul class="sub-menu">-->
-<!--                                                <li class="menu-item"><a href="courses1.html">Course 1</a></li>-->
-<!--                                                <li class="menu-item"><a href="courses2.html">Course 2</a></li>-->
-<!--                                            </ul>-->
-<!--                                        </li>-->
-<!--                                        <li class="menu-item">-->
-<!--                                            <a href="#">Features</a>-->
-<!--                                            <ul class="sub-menu">-->
-<!--                                                <li class="menu-item"><a href="aboutus1.html">About us 1</a></li>-->
-<!--                                                <li class="menu-item"><a href="aboutus2.html">About us 2</a></li>-->
-<!--                                                <li class="menu-item"><a href="membership.html">Membership</a></li>-->
-<!--                                            </ul>-->
-<!--                                        </li>-->
-<!--                                        <li class="menu-item">-->
-<!--                                            <a href="events1.html">Events</a>-->
-<!--                                            <ul class="sub-menu">-->
-<!--                                                <li class="menu-item"><a href="events1.html">Events 1</a></li>-->
-<!--                                                <li class="menu-item"><a href="events2.html">Events 2</a>-->
-<!--                                                    <ul class="sub-menu">-->
-<!--                                                        <li class="menu-item"><a href="single-event.html">Event Detail</a></li>-->
-<!--                                                    </ul>-->
-<!--                                                </li>-->
-<!--                                            </ul>-->
-<!--                                        </li>-->
-<!--                                        <li class="menu-item">-->
-<!--                                            <a href="gallery1.html">Gallery</a>-->
-<!--                                            <ul class="sub-menu">-->
-<!--                                                <li class="menu-item"><a href="gallery1.html">Gallery 1</a></li>-->
-<!--                                                <li class="menu-item"><a href="gallery2.html">Gallery 2</a></li>-->
-<!--                                                <li class="menu-item"><a href="gallery3.html">Gallery 3</a></li>-->
-<!--                                            </ul>-->
-<!--                                        </li>-->
-<!--                                        <li class="menu-item">-->
-<!--                                            <a href="blog1.html">Blog</a>-->
-<!--                                            <ul class="sub-menu">-->
-<!--                                                <li class="menu-item"><a href="blog1.html">Blog 1</a>-->
-<!--                                                    <ul class="sub-menu">-->
-<!--                                                        <li class="menu-item"><a href="single.html">Blog detail</a></li>-->
-<!--                                                    </ul>-->
-<!--                                                </li>-->
-<!--                                                <li class="menu-item"><a href="blog2.html">Blog 2</a></li>-->
-<!--                                            </ul>-->
-<!--                                        </li>-->
-<!--                                        <li class="menu-item">-->
-<!--                                            <a href="contact1.html">Contact</a>-->
-<!--                                            <ul class="sub-menu">-->
-<!--                                                <li class="menu-item"><a href="contact1.html">Contact 1</a></li>-->
-<!--                                                <li class="menu-item"><a href="contact2.html">Contact 2</a></li>-->
-<!--                                                <li class="menu-item"><a href="contact3.html">Contact 3</a></li>-->
-<!--                                            </ul>-->
-<!--                                        </li>-->
-<!--                                    </ul>-->
-<!--                                </div>-->
-<!--                            </nav>-->
-<!--                            <div class="search-box">-->
-<!--                                <form method="POST">-->
-<!--                                    <input type="text" placeholder="Tìm kiếm" id="search-box" name="s" value="">-->
-<!--                                    <div class="search-icon display-flex-center">-->
-<!--                                        <i class="fas fa-search"></i>-->
-<!--                                    </div>-->
-<!--                                </form>-->
-<!--                            </div>-->
-<!--                        </div>-->
                     </div>
                 </div>
             </div>
@@ -183,108 +106,31 @@
                 <nav class="menu-mobile">
                     <ul class="au-navbar-menu">
                          <ul class="au-navbar-menu">
+                             {% if user.is_authenticated %}
                              <li class="menu-item curent-menu-item">
-                                 {% if user.is_authenticated %}
                                  <a href="{% url 'profile' username=request.user.username %}" class="signup"><i class="fas fa-user"></i>{{ user.username }}</a>
+                             </li>
+                             <li class="menu-item curent-menu-item">
                                  <a href="javascript:{document.getElementById('logout').submit()}" class="logout"><i class="fas fa-sign-out-alt"></i>Выйти</a>
+                             </li>
+                             <li class="menu-item curent-menu-item">
                                  <a href="{% url 'create' %}" class="signup"><i class="fas fa-plus-square"></i>Создать курс</a>
+                             </li>
+                             <li class="menu-item curent-menu-item">
                                  <form id="logout" method="POST" action="{% url 'logout' %}">
                                      {% csrf_token %}
                                      <input type="hidden" />
                                  </form>
-                                 {% else %}
-                                 <a href="{% url 'login' %}" class="login"><i class="fas fa-user"></i>Войти</a>
-                                 <a href="{% url 'signup' %}" class="signup"><i class="fas fa-edit"></i>Регистрация</a>
-                                 {% endif %}
                              </li>
-<!--                        <ul class="au-navbar-menu">-->
-<!--                            <li class="menu-item curent-menu-item">-->
-<!--                                <a href="index.html">Demo</a>-->
-<!--                                <span class="arrow">-->
-<!--                                    <i></i>-->
-<!--                                </span>-->
-<!--                                <ul class="sub-menu">-->
-<!--                                    <li class="menu-item"><a href="index.html">Home 1</a></li>-->
-<!--                                    <li class="menu-item"><a href="index2.html">Home 2</a></li>-->
-<!--                                    <li class="menu-item"><a href="index3.html">Home 3</a></li>-->
-<!--                                </ul>-->
-<!--                            </li>-->
-<!--                            <li class="menu-item">-->
-<!--                                <a href="courses1.html">Courses</a>-->
-<!--                                <span class="arrow">-->
-<!--                                    <i></i>-->
-<!--                                </span>-->
-<!--                                <ul class="sub-menu">-->
-<!--                                    <li class="menu-item"><a href="courses1.html">Course 1</a></li>-->
-<!--                                    <li class="menu-item"><a href="courses2.html">Course 2</a></li>-->
-<!--                                </ul>-->
-<!--                            </li>-->
-<!--                            <li class="menu-item">-->
-<!--                                <a href="features.html">Features</a>-->
-<!--                                <span class="arrow">-->
-<!--                                    <i></i>-->
-<!--                                </span>-->
-<!--                                <ul class="sub-menu">-->
-<!--                                    <li class="menu-item"><a href="aboutus1.html">About us 1</a></li>-->
-<!--                                    <li class="menu-item"><a href="aboutus2.html">About us 2</a></li>-->
-<!--                                    <li class="menu-item"><a href="membership.html">Membership</a></li>-->
-<!--                                </ul>-->
-<!--                            </li>-->
-<!--                            <li class="menu-item">-->
-<!--                                <a href="events1.html">Events</a>-->
-<!--                                <span class="arrow">-->
-<!--                                    <i></i>-->
-<!--                                </span>-->
-<!--                                <ul class="sub-menu">-->
-<!--                                    <li class="menu-item"><a href="events1.html">Events 1</a></li>-->
-<!--                                    <li class="menu-item"><a href="events2.html">Events 2</a>-->
-<!--                                        <ul class="sub-menu">-->
-<!--                                            <li class="menu-item"><a href="single-event.html">Event Detail</a></li>-->
-<!--                                        </ul>-->
-<!--                                    </li>-->
-<!--                                </ul>-->
-<!--                            </li>-->
-<!--                            <li class="menu-item">-->
-<!--                                <a href="gallery1.html">Gallery</a>-->
-<!--                                <span class="arrow">-->
-<!--                                    <i></i>-->
-<!--                                </span>-->
-<!--                                <ul class="sub-menu">-->
-<!--                                    <li class="menu-item"><a href="gallery1.html">Gallery 1</a></li>-->
-<!--                                    <li class="menu-item"><a href="gallery2.html">Gallery 2</a></li>-->
-<!--                                    <li class="menu-item"><a href="gallery3.html">Gallery 3</a></li>-->
-<!--                                </ul>-->
-<!--                            </li>-->
-<!--                            <li class="menu-item">-->
-<!--                                <a href="blog1.html">Blog</a>-->
-<!--                                <span class="arrow">-->
-<!--                                    <i></i>-->
-<!--                                </span>-->
-<!--                                <ul class="sub-menu">-->
-<!--                                    <li class="menu-item"><a href="blog1.html">Blog 1</a>-->
-<!--                                        <ul class="sub-menu">-->
-<!--                                            <li class="menu-item"><a href="single.html">Blog detail</a></li>-->
-<!--                                        </ul>-->
-<!--                                    </li>-->
-<!--                                    <li class="menu-item"><a href="blog2.html">Blog 2</a></li>-->
-<!--                                </ul>-->
-<!--                            </li>-->
-<!--                            <li class="menu-item">-->
-<!--                                <a href="contact1.html">Contact</a>-->
-<!--                                <span class="arrow">-->
-<!--                                    <i></i>-->
-<!--                                </span>-->
-<!--                                <ul class="sub-menu">-->
-<!--                                    <li class="menu-item"><a href="contact1.html">Contact 1</a></li>-->
-<!--                                    <li class="menu-item"><a href="contact2.html">Contact 2</a></li>-->
-<!--                                    <li class="menu-item"><a href="contact3.html">Contact 3</a></li>-->
-<!--                                </ul>-->
-<!--                            </li>-->
-<!--                        </ul>-->
-<!--                    </div>-->
-<!--                </nav>-->
-<!--            </div>-->
-            <!-- <div class="clear"></div> -->
+                                 {% else %}
+                             <li class="menu-item curent-menu-item">
+                                 <a href="{% url 'login' %}" class="login"><i class="fas fa-user"></i>Войти</a>
+                             </li>
+                             <li class="menu-item curent-menu-item">
+                                 <a href="{% url 'signup' %}" class="signup"><i class="fas fa-edit"></i>Регистрация</a>
+                             </li>
+                                 {% endif %}
+            <div class="clear"></div>
             <div class="header-top">
                 <div class="container-fluid">
                     <div class="header-top-content display-flex">
