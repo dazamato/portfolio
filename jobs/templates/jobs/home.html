@@ -36,6 +36,18 @@
     </div>
 </div>
 <!-- Features Courses -->
+{% load hero_slider_tags %}
+
+{% render_hero_slider %}
+
+<script type="text/javascript">
+$(document).ready(function() {
+    // put all your jQuery goodness in here.
+    $('.carousel').carousel({
+        /* interval: 3000 */
+    })
+});
+</script>
 <section class="featured-course section-padding-large">
     <div class="container">
         <div class="section-title section-title-left section-title-m50">

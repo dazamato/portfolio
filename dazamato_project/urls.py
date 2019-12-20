@@ -11,5 +11,6 @@ urlpatterns = [
     path('', jobs.views.home, name='home'),
     path('blog/', include('blog.urls')),
     path('accounts/', include('accounts.urls')),
-    path('courses/', include('courses.urls')),    
+    path('courses/', include('courses.urls')),
+    path('hero-slider/', include('hero_slider.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

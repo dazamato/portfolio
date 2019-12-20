@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="{% static 'vendor/fancybox/dist/jquery.fancybox.min.css' %}">
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
 
-    <link rel="shortcut icon" href="favicon.png">
+    <link rel="shortcut icon" href="{% static 'favicon_v2.png'%}">
 </head>
 
 <body>
@@ -44,6 +44,11 @@
         <div class="header-top hidden-tablet-landscape">
             <div class="container">
                 <div class="header-top-content display-flex">
+                    <div class="logo">
+                            <a href="{% url 'home' %}">
+                              <img src="{% static 'logo_new_1.png'%}" height="120" width="120" class="d-inline-block align-top"  href="{% url 'home' %}"/>
+                            </a>
+                    </div>
                     <div class="header-top-info">
                         <a href="tel:87015733188" class="telephone"><i class="fas fa-mobile-alt"></i> +7(701)573 31 88</a>
                         <a href="mailto:dazamato@gmail.com" class="email"><i class="far fa-envelope"></i> dazamato@gmail.com</a>
@@ -66,25 +71,13 @@
                 </div>
             </div>
         </div>
-        <div class="header-bottom hidden-tablet-landscape" id="js-navbar-fixed">
-            <div class="container">
-                <div class="header-bottom">
-                    <div class="header-bottom-content display-flex">
-                        <div class="logo">
-                            <a href="{% url 'home' %}">
-                              <img src="{% static 'Logo_new.png'%}" height="120" width="240" alt="Edumat" class="d-inline-block align-top"  href="{% url 'home' %}"/>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+
         <div class="hidden-tablet-landscape-up header-mobile">
             <div class="header-top-mobile">
                 <div class="container-fluid">
                     <div class="logo">
                         <a href="{% url 'home' %}">
-                            <img src="{% static 'logo_data.png'%}" alt="Edumat" height="30" width="30" class="d-inline-block align-top" />
+                            <img src="{% static 'logo_new_1.png'%}" alt="Edumat" height="100" width="100" class="d-inline-block align-top" />
                         </a>
                     </div>
                     <div class="search-box">

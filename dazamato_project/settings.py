@@ -41,7 +41,10 @@ INSTALLED_APPS = [
     'jobs',
     'blog',
     'accounts',
-    'courses'
+    'courses',
+    'filer',
+    'easy_thumbnails',
+    'garpix_slider',
 ]
 
 MIDDLEWARE = [
